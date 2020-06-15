@@ -1,6 +1,10 @@
 import React from "react";
 
-import { Card, Container, Row, Col } from "react-bootstrap";
+import { Card as UnstyledCard, Container, Row, Col } from "react-bootstrap";
+
+import styled from "styled-components";
+
+// have removed use of tagline & title now as they are displayed outside the component now
 
 const TitleCard = ({
   title,
@@ -14,28 +18,40 @@ const TitleCard = ({
   const posterUrl = `https://image.tmdb.org/t/p/original/${poster}`;
   const formattedDate = released;
   return (
-    <Container>
-      <Row>
-        <Col xs={3}>
-          <Card style={{ backgroundColor: "transparent" }}>
-            <Card.Title className="text-center">{title}</Card.Title>
-            <Card.Subtitle>
-              <Row>
-                <Col>{language}</Col>
-                <Col className="text-right">{formattedDate}</Col>
-              </Row>
-            </Card.Subtitle>
-            <Card.Subtitle>{genres.map(genre => genre.name)}</Card.Subtitle>
-            <Card.Img src={posterUrl} style={{ width: "35%" }} />
-            <Card.Body>
-              <Card.Text className="text-center">{tagline}</Card.Text>
-            </Card.Body>
-            <Card.Footer className="text-center">{rating}</Card.Footer>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Card
+      style={{
+        backgroundColor: "transparent",
+        userSelect: "none"
+      }}
+    >
+      <Card.Img
+        src={posterUrl}
+        style={{ width: "15vw", minHeight: "260px", minWidth: "170px" }}
+      />
+      <Card.ImgOverlay className="d-flex flex-column justify-content-between">
+        <Row noGutters>
+          <Col xs={2}>{language}</Col>
+          <Col xs={10} className="text-right">
+            {formattedDate}
+          </Col>
+        </Row>
+        <Row noGutters>
+          <Col xs={10} className="text-left">
+            {genres.map(genre => genre.name)}
+          </Col>
+          <Col xs={2} className="text-right">
+            {rating}
+          </Col>
+        </Row>
+      </Card.ImgOverlay>
+    </Card>
   );
 };
+
+const Card = styled(UnstyledCard)`
+  &:hover {
+    border: 1px solid skyblue;
+  }
+`;
 
 export default TitleCard;
