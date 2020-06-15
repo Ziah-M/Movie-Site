@@ -35,6 +35,8 @@ const MoviePage = ({ loadedMovie }) => {
   // TODO - TEMP FOR DEV BUILD - replace with query params and react-router
   const [activeComponent, setActiveComponent] = useState("ABOUT");
 
+  const [searchValue, setSearchValue] = useState("");
+
   //API call when loaded movie changes
   useEffect(() => {
     handleFetch(loadedMovie);
@@ -132,7 +134,11 @@ const MoviePage = ({ loadedMovie }) => {
 
         <Nav className="ml-auto">
           <StyledNavLink>
-            <Control placeholder="Search" />
+            <Control
+              value={searchValue}
+              onChange={e => setSearchValue(e.target.value)}
+              placeholder="Search"
+            />
           </StyledNavLink>
         </Nav>
       </Navbar>
@@ -240,6 +246,7 @@ outline:none !important
   background-color: rgba(255,255,255,0.2) !important;
   border: none !important;
   outline: none !important;
+
   &::placeholder {
     color: #a8a8a8 !important;
     text-align:left;
