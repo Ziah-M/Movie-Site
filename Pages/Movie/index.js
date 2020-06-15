@@ -5,7 +5,9 @@ import {
   Spinner,
   Container as UnstyledContainer,
   Row,
-  Col
+  Col,
+  Navbar,
+  Nav
 } from "react-bootstrap";
 import Cast from "./Cast";
 import Reviews from "./Reviews";
@@ -28,6 +30,9 @@ const MoviePage = ({ loadedMovie }) => {
   const [movieCast, setMovieCast] = useState(null);
   const [movieReviews, setMovieReviews] = useState(null);
   const [id, setId] = useState(loadedMovie);
+
+  // TODO - TEMP FOR DEV BUILD - replace with query params and react-router
+  const [activeComponent, setActiveComponent] = useState("ABOUT");
 
   //API call when loaded movie changes
   useEffect(() => {
@@ -86,11 +91,30 @@ const MoviePage = ({ loadedMovie }) => {
 
   return (
     <Container fluid style={backgroundStyle}>
+      <Navbar style={{ borderBottom: "1px solid white" }} variant="dark">
+        <Nav>
+          <Nav.Link onClick={() => setActiveComponent("ABOUT")}>HOME</Nav.Link>
+
+          <Nav.Link onClick={() => setActiveComponent("ABOUT")}>ABOUT</Nav.Link>
+
+          <Nav.Link onClick={() => setActiveComponent("CAST")}>CAST</Nav.Link>
+
+          <Nav.Link onClick={() => setActiveComponent("REVIEWS")}>
+            REVIEWS
+          </Nav.Link>
+
+          <Nav.Link onClick={() => setActiveComponent("TRAILERS")}>
+            TRAILERS
+          </Nav.Link>
+        </Nav>
+
+        <Nav className="ml-auto">
+          <Nav.Link>Search</Nav.Link>
+        </Nav>
+      </Navbar>
       {movieDetails ? (
         <>
-          <Row
-            style={{ height: "100vh", minHeight: "100vh", maxHeight: "100vh" }}
-          >
+          <Row style={{ height: "95vh", minHeight: "95vh", maxHeight: "95vh" }}>
             <Col xs={12} className="d-flex flex-column justify-content-between">
               <Row>
                 <TitleCard
@@ -102,16 +126,43 @@ const MoviePage = ({ loadedMovie }) => {
                   poster={movieDetails.poster_path}
                   tagline={movieDetails.tagline}
                 />
-
-                {movieCast ? (
-                  <Cast castMembers={movieCast} />
-                ) : (
-                  <Spinner animation="border" variant="warning" />
-                )}
               </Row>
               <Row className="m-4">
-                <h2 style={{textAlign:'center', width:'100%'}}>{movieDetails.tagline}</h2>
-                <Summary data={movieDetails.overview} />
+                {activeComponent === "ABOUT" && (
+                  <>
+                    <h2 style={{ textAlign: "center", width: "100%" }}>
+                      {movieDetails.tagline}
+                    </h2>
+                    <Summary data={movieDetails.overview} />
+                  </>
+                )}
+                {activeComponent === "CAST" && (
+                  <>
+                    {movieCast ? (
+                      <Cast castMembers={movieCast} />
+                    ) : (
+                      <Spinner animation="border" variant="warning" />
+                    )}
+                  </>
+                )}
+                {activeComponent === "REVIEWS" && (
+                  <>
+                    {movieReviews ? (
+                      <Reviews reviews={movieReviews} />
+                    ) : (
+                      <Spinner animation="border" variant="warning" />
+                    )}
+                  </>
+                )}
+                {activeComponent === "TRAILERS" && (
+                  <>
+                    {movieTrailers ? (
+                      <Trailers trailers={movieTrailers} />
+                    ) : (
+                      <Spinner animation="border" variant="warning" />
+                    )}
+                  </>
+                )}
               </Row>
             </Col>
           </Row>
@@ -120,18 +171,6 @@ const MoviePage = ({ loadedMovie }) => {
         <Spinner animation="border" variant="warning" />
       )}
 
-      {movieTrailers ? (
-        <Trailers trailers={movieTrailers} />
-      ) : (
-        <Spinner animation="border" variant="warning" />
-      )}
-      {movieReviews ? (
-        <Reviews reviews={movieReviews} />
-      ) : (
-        <Spinner animation="border" variant="warning" />
-      )}
-      {/* --------------------------
-       */}
       {/* <SimilarMovies /> */}
     </Container>
   );
