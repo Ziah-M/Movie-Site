@@ -119,7 +119,7 @@ const MoviePage = ({ loadedMovie }) => {
         <>
           <Row style={{ height: "90vh", minHeight: "90vh", maxHeight: "90vh" }}>
             <Col xs={12} className="d-flex flex-column justify-content-between">
-              <Row className="my-4">
+              <Row className="mx-1 mt-4">
                 <TitleCard
                   rating={movieDetails.vote_average}
                   title={movieDetails.original_title}
@@ -130,22 +130,27 @@ const MoviePage = ({ loadedMovie }) => {
                   tagline={movieDetails.tagline}
                 />
               </Row>
-              <Row>
-                <Col xs={12} className="d-flex justify-content-center">
-                  <h1
-                    style={{
-                      color: "rgba(255,255,255,0.4)",
-                      fontSize: "102px"
-                    }}
-                  >
-                    {movieDetails.title.toUpperCase()}
-                  </h1>
-                </Col>
-              </Row>
+              {activeComponent === "ABOUT" && (
+                <Row>
+                  <Col xs={12} className="d-flex justify-content-center">
+                    <h1
+                      style={{
+                        color: "rgba(255,255,255,0.4)",
+                        fontSize: "102px"
+                      }}
+                    >
+                      {movieDetails.title.toUpperCase()}
+                    </h1>
+                  </Col>
+                </Row>
+              )}
               <Row className="m-5">
                 {activeComponent === "ABOUT" && (
                   <>
-                    <h2 style={{ textAlign: "center", width: "100%" }}>
+                    <h2
+                      className="mb-4"
+                      style={{ textAlign: "center", width: "100%" }}
+                    >
                       {movieDetails.tagline}
                     </h2>
                     <Summary data={movieDetails.overview} />
