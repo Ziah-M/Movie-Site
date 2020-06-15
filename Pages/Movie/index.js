@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, Spinner } from "react-bootstrap";
+import {
+  Button,
+  Spinner,
+  Container as UnstyledContainer,
+  Row,
+  Col
+} from "react-bootstrap";
 import Cast from "./Cast";
 import Reviews from "./Reviews";
 import Summary from "./Summary";
 import TitleCard from "./TitleCard";
 import Trailers from "./Trailers";
 import SimilarMovies from "./SimilarMovies";
-import API_KEY from "../../private"
+import API_KEY from "../../private";
+import styled from "styled-components";
 
 /* NOTE: back-drop path is what is used for the
 Featured movie (netflix-style at top of landing page)
@@ -70,36 +77,49 @@ const MoviePage = ({ loadedMovie }) => {
           "linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(" +
           `https://image.tmdb.org/t/p/w400/${movieDetails.backdrop_path}` +
           ")",
+        backgroundStyle: "fixed",
+        backgroundSize: "100% 100%",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "100%",
         color: "white"
       }
     : {};
 
   return (
-    <div style={backgroundStyle}>
+    <Container fluid style={backgroundStyle}>
       {movieDetails ? (
         <>
-          {" "}
-          <TitleCard
-            rating={movieDetails.vote_average}
-            title={movieDetails.original_title}
-            released={movieDetails.release_date}
-            language={movieDetails.original_language}
-            genres={movieDetails.genres}
-            poster={movieDetails.poster_path}
-            tagline={movieDetails.tagline}
-          />
-          <Summary data={movieDetails.overview} />
+          <Row
+            style={{ height: "100vh", minHeight: "100vh", maxHeight: "100vh" }}
+          >
+            <Col xs={12} className="d-flex flex-column justify-content-between">
+              <Row>
+                <TitleCard
+                  rating={movieDetails.vote_average}
+                  title={movieDetails.original_title}
+                  released={movieDetails.release_date}
+                  language={movieDetails.original_language}
+                  genres={movieDetails.genres}
+                  poster={movieDetails.poster_path}
+                  tagline={movieDetails.tagline}
+                />
+
+                {movieCast ? (
+                  <Cast castMembers={movieCast} />
+                ) : (
+                  <Spinner animation="border" variant="warning" />
+                )}
+              </Row>
+              <Row className="m-4">
+                <h2 style={{textAlign:'center', width:'100%'}}>{movieDetails.tagline}</h2>
+                <Summary data={movieDetails.overview} />
+              </Row>
+            </Col>
+          </Row>
         </>
       ) : (
         <Spinner animation="border" variant="warning" />
       )}
-      {movieCast ? (
-        <Cast castMembers={movieCast} />
-      ) : (
-        <Spinner animation="border" variant="warning" />
-      )}
+
       {movieTrailers ? (
         <Trailers trailers={movieTrailers} />
       ) : (
@@ -110,9 +130,16 @@ const MoviePage = ({ loadedMovie }) => {
       ) : (
         <Spinner animation="border" variant="warning" />
       )}
-      <SimilarMovies />
-    </div>
+      {/* --------------------------
+       */}
+      {/* <SimilarMovies /> */}
+    </Container>
   );
 };
+
+const Container = styled(UnstyledContainer)`
+  width: 100vw;
+  height: 100vh;
+`;
 
 export default MoviePage;
