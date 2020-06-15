@@ -7,7 +7,8 @@ import {
   Row,
   Col,
   Navbar,
-  Nav
+  Nav,
+  FormControl
 } from "react-bootstrap";
 import Cast from "./Cast";
 import Reviews from "./Reviews";
@@ -130,7 +131,9 @@ const MoviePage = ({ loadedMovie }) => {
         </Nav>
 
         <Nav className="ml-auto">
-          <StyledNavLink>Search</StyledNavLink>
+          <StyledNavLink>
+            <Control placeholder="Search" />
+          </StyledNavLink>
         </Nav>
       </Navbar>
       {movieDetails ? (
@@ -227,6 +230,20 @@ const StyledNavLink = styled(Nav.Link)`
     css`
       border-bottom: 2px solid red !important;
     `}
+`;
+
+const Control = styled(FormControl)`
+width:15vw;
+max-width:250px;
+outline:none !important
+  color: #a8a8a8 !important;
+  background-color: rgba(255,255,255,0.2) !important;
+  border: none !important;
+  outline: none !important;
+  &::placeholder {
+    color: #a8a8a8 !important;
+    text-align:left;
+  }
 `;
 
 export default MoviePage;
