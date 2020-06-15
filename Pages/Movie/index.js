@@ -91,7 +91,10 @@ const MoviePage = ({ loadedMovie }) => {
 
   return (
     <Container fluid style={backgroundStyle}>
-      <Navbar style={{ borderBottom: "1px solid white" }} variant="dark">
+      <Navbar
+        style={{ borderBottom: "1px solid white", height: "10vh" }}
+        variant="dark"
+      >
         <Nav>
           <Nav.Link onClick={() => setActiveComponent("ABOUT")}>HOME</Nav.Link>
 
@@ -114,7 +117,7 @@ const MoviePage = ({ loadedMovie }) => {
       </Navbar>
       {movieDetails ? (
         <>
-          <Row style={{ height: "95vh", minHeight: "95vh", maxHeight: "95vh" }}>
+          <Row style={{ height: "90vh", minHeight: "90vh", maxHeight: "90vh" }}>
             <Col xs={12} className="d-flex flex-column justify-content-between">
               <Row>
                 <TitleCard
@@ -127,7 +130,7 @@ const MoviePage = ({ loadedMovie }) => {
                   tagline={movieDetails.tagline}
                 />
               </Row>
-              <Row className="m-4">
+              <Row className="m-5">
                 {activeComponent === "ABOUT" && (
                   <>
                     <h2 style={{ textAlign: "center", width: "100%" }}>
