@@ -16,7 +16,7 @@ import TitleCard from "./TitleCard";
 import Trailers from "./Trailers";
 import SimilarMovies from "./SimilarMovies";
 import API_KEY from "../../private";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 /* NOTE: back-drop path is what is used for the
 Featured movie (netflix-style at top of landing page)
@@ -96,23 +96,41 @@ const MoviePage = ({ loadedMovie }) => {
         variant="dark"
       >
         <Nav>
-          <Nav.Link onClick={() => setActiveComponent("ABOUT")}>HOME</Nav.Link>
+          <StyledNavLink onClick={() => setActiveComponent("ABOUT")}>
+            HOME
+          </StyledNavLink>
 
-          <Nav.Link onClick={() => setActiveComponent("ABOUT")}>ABOUT</Nav.Link>
+          <StyledNavLink
+            active={activeComponent === "ABOUT"}
+            onClick={() => setActiveComponent("ABOUT")}
+          >
+            ABOUT
+          </StyledNavLink>
 
-          <Nav.Link onClick={() => setActiveComponent("CAST")}>CAST</Nav.Link>
+          <StyledNavLink
+            active={activeComponent === "CAST"}
+            onClick={() => setActiveComponent("CAST")}
+          >
+            CAST
+          </StyledNavLink>
 
-          <Nav.Link onClick={() => setActiveComponent("REVIEWS")}>
+          <StyledNavLink
+            active={activeComponent === "REVIEWS"}
+            onClick={() => setActiveComponent("REVIEWS")}
+          >
             REVIEWS
-          </Nav.Link>
+          </StyledNavLink>
 
-          <Nav.Link onClick={() => setActiveComponent("TRAILERS")}>
+          <StyledNavLink
+            active={activeComponent === "TRAILERS"}
+            onClick={() => setActiveComponent("TRAILERS")}
+          >
             TRAILERS
-          </Nav.Link>
+          </StyledNavLink>
         </Nav>
 
         <Nav className="ml-auto">
-          <Nav.Link>Search</Nav.Link>
+          <StyledNavLink>Search</StyledNavLink>
         </Nav>
       </Navbar>
       {movieDetails ? (
@@ -199,6 +217,16 @@ const MoviePage = ({ loadedMovie }) => {
 const Container = styled(UnstyledContainer)`
   width: 100vw;
   height: 100vh;
+`;
+
+const StyledNavLink = styled(Nav.Link)`
+  margin: 0 2vw;
+
+  ${props =>
+    props.active &&
+    css`
+      border-bottom: 2px solid red !important;
+    `}
 `;
 
 export default MoviePage;
