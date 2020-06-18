@@ -5,6 +5,8 @@ import MovieDetailsOverlay from "./MovieDetailsOverlay";
 import TrendingMoviesGridOverlay from "./TrendingMoviesGridOverlay";
 
 const Featured = ({
+  movies,
+  movie,
   movie: { vote_average = 0, title = "", backdrop_path = "" }
 }) => {
   // for carousel
@@ -24,8 +26,8 @@ const Featured = ({
           <StyledImage
             src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
           />
-          <MovieDetailsOverlay />
-          <TrendingMoviesGridOverlay />
+          <MovieDetailsOverlay movie={movie} />
+          <TrendingMoviesGridOverlay movies={movies} />
         </Col>
       </Row>
     </StyledContainer>

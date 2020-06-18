@@ -12,11 +12,20 @@ const Landing = () => {
   //TODO: Dummy data while building the Movie Page
   //This should come from the URL query parameter
   const [loadedMovie, setLoadedMovie] = useState(501);
+  const [showMoviePage, setShowMoviePage] = useState(false);
+
+  // TODO -> REPLACE WITH ROUTING -- TEMPORARY FOR BUILD PROTOTYPING PURPOSES ONLY
+  const toggleShowMoviePage = () => setShowMoviePage(!showMoviePage);
 
   return (
     <Container className="p-0" style={baseStyle} fluid>
-      {/* <MoviePage loadedMovie={loadedMovie} /> */}
-      <Movies />
+      {showMoviePage && (
+        <MoviePage
+          loadedMovie={loadedMovie}
+          toggleShowMoviePage={toggleShowMoviePage}
+        />
+      )}
+      {!showMoviePage && <Movies toggleShowMoviePage={toggleShowMoviePage} />}
     </Container>
   );
 };

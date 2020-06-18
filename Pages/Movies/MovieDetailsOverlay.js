@@ -7,18 +7,34 @@ import {
   Image
 } from "react-bootstrap";
 import styled from "styled-components";
+import { theme } from "../../Theme";
 
-const MovieDetailsOverlay = () => (
+const MovieDetailsOverlay = ({
+  movie: {
+    title = "Grizzly Man",
+    year = "2004",
+    genre = "Documentary",
+    runTime = "1hr 55mins"
+  }
+}) => (
   <StyledContainer fluid>
     <Row noGutters>
-      <Title>Grizzly Man</Title>
+      <Title>{title}</Title>
     </Row>
     <Row noGutters>
-      <Details>2004 | Documentary | 1hr 55mins</Details>
+      <Details>
+        <span style={{ padding: "0 10px", borderRight: "1px solid white" }}>
+          {year}
+        </span>
+        <span style={{ padding: "0 10px", borderRight: "1px solid white" }}>
+          {genre}
+        </span>
+        <span style={{ padding: "0 10px" }}>{runTime}</span>
+      </Details>
     </Row>
     <Row noGutters>
       <Col xs={12}>
-        <WatchButton>Watch Now</WatchButton>
+        <WatchButton>Launch</WatchButton>
         <PlaylistButton>Playlist</PlaylistButton>
       </Col>
     </Row>
@@ -31,14 +47,19 @@ const Row = styled(UnstyledRow)`
 
 const StyledContainer = styled(Container)`
   position: absolute;
+  max-width: 300px;
+  max-height: 200px;
   top: 30%;
   left: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
-const Title = styled.h1``;
+const Title = styled.h1`
+  color: ${theme.white};
+`;
 
 const Details = styled.div``;
 
@@ -46,10 +67,10 @@ const WatchButton = styled.button`
   width: 100px;
   height: 50px;
   border-radius: 5px;
-  color: white;
+  color: ${theme.white};
   border: none;
   margin: 0px 10px;
-  background-color: #24baef;
+  background-color: ${theme.lightBlue};
   &:hover {
     background-color: #007bff;
   }

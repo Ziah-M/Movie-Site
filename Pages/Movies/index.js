@@ -1,16 +1,17 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
+import styled from "styled-components";
 import useEventListener from "../../Hooks/useEventListener.js";
-import MoviePage from "../Movie";
+import API_KEY from "../../private";
+import { theme } from "../../Theme";
 import Featured from "./Featured";
 import MovieSlider from "./MovieSlider";
-import API_KEY from "../../private";
 
 const URL = "https://api.themoviedb.org/3";
 const MOVIE_URL = "https://api.themoviedb.org/3/movie";
 
-const Movies = () => {
+const Movies = ({ toggleShowMoviePage }) => {
   const [trending, setTrending] = useState(null);
   const [playingNow, setPlayingNow] = useState(null);
   const [popular, setPopular] = useState(null);
@@ -26,7 +27,7 @@ const Movies = () => {
   }, []);
 
   const handleFetch = () => {
-    // getTrending("movie", "week");
+    getTrending("movie", "week");
     // getPlayingNow();
     // getPopular();
     // getTopRated();
@@ -105,40 +106,69 @@ const Movies = () => {
   };
 
   return (
-    <Container fluid style={baseStyle}>
+    <Container fluid style={baseStyle} onClick={() => toggleShowMoviePage()}>
       <Row noGutters fluid>
-        <Featured movie={featuredMovieDetails} />
+        <Featured movie={featuredMovieDetails} movies={trending} />
       </Row>
-      <MovieSlider
-        movies={playingNow}
-        title="In Cinemas Now"
-        baseStyle={baseStyle}
-        handleGoToMovie={handleGoToMovie}
-        width={width}
-      />
-      <MovieSlider
-        movies={comingSoon}
-        title="Coming Soon"
-        baseStyle={baseStyle}
-        handleGoToMovie={handleGoToMovie}
-        width={width}
-      />
-      <MovieSlider
-        movies={popular}
-        title="Popular"
-        baseStyle={baseStyle}
-        handleGoToMovie={handleGoToMovie}
-        width={width}
-      />
-      <MovieSlider
-        movies={topRated}
-        title="Top Rated"
-        baseStyle={baseStyle}
-        handleGoToMovie={handleGoToMovie}
-        width={width}
-      />
+      <DarkSection fluid>
+        <MovieSlider
+          movies={playingNow}
+          title="In Cinemas Now"
+          baseStyle={baseStyle}
+          handleGoToMovie={handleGoToMovie}
+          width={width}
+        />
+      </DarkSection>
+
+      <LightSection fluid>
+        <MovieSlider
+          movies={comingSoon}
+          title="Coming Soon"
+          baseStyle={baseStyle}
+          handleGoToMovie={handleGoToMovie}
+          width={width}
+        />
+      </LightSection>
+      <DarkSection fluid>
+        <MovieSlider
+          movies={popular}
+          title="Popular"
+          baseStyle={baseStyle}
+          handleGoToMovie={handleGoToMovie}
+          width={width}
+        />
+      </DarkSection>
+      <LightSection fluid>
+        <MovieSlider
+          movies={topRated}
+          title="Top Rated"
+          baseStyle={baseStyle}
+          handleGoToMovie={handleGoToMovie}
+          width={width}
+        />
+      </LightSection>
     </Container>
   );
 };
+
+// base style for sections
+const SectionBase = styled(Container)`
+  padding: 20px;
+  width: 100vw;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const DarkSection = styled(SectionBase)`
+  background-color: ${theme.darkBlue};
+  color: ${theme.white};
+`;
+
+const LightSection = styled(SectionBase)`
+  background-color: ${theme.white};
+  color: ${theme.white};
+`;
 
 export default Movies;

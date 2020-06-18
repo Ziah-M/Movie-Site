@@ -25,7 +25,7 @@ Featured movie (netflix-style at top of landing page)
 
 const URL = "https://api.themoviedb.org/3/movie";
 
-const MoviePage = ({ loadedMovie }) => {
+const MoviePage = ({ loadedMovie, toggleShowMoviePage }) => {
   const [movieDetails, setMovieDetails] = useState(null);
   const [movieTrailers, setMovieTrailers] = useState(null);
   const [movieCast, setMovieCast] = useState(null);
@@ -99,7 +99,7 @@ const MoviePage = ({ loadedMovie }) => {
         variant="dark"
       >
         <Nav>
-          <StyledNavLink onClick={() => setActiveComponent("ABOUT")}>
+          <StyledNavLink onClick={() => toggleShowMoviePage()}>
             HOME
           </StyledNavLink>
 

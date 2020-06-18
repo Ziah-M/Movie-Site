@@ -6,7 +6,7 @@ import Slider from "../../Components/Slider";
 const MovieSlider = ({ movies, title, baseStyle, handleGoToMovie, width }) => {
   return (
     <Container fluid>
-      <Row style={{ marginTop: "25px" }}>
+      <Row>
         <h1>{title}</h1>
         {movies && (
           <Slider
