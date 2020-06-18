@@ -8,6 +8,7 @@ import MovieSlider from "./MovieSlider";
 import API_KEY from "../../private";
 
 const URL = "https://api.themoviedb.org/3";
+const MOVIE_URL = "https://api.themoviedb.org/3/movie";
 
 const Movies = () => {
   const [trending, setTrending] = useState(null);
@@ -15,20 +16,22 @@ const Movies = () => {
   const [popular, setPopular] = useState(null);
   const [topRated, setTopRated] = useState(null);
   const [comingSoon, setComingSoon] = useState(null);
+  const [featuredMovieDetails, setFeaturedMovieDetails] = useState({});
 
   //Temporary until I use routing with query params for this
-  const [loadedMovie, setLoadedMovie] = useState(500);
+  const [loadedMovie, setLoadedMovie] = useState(501);
 
   useEffect(() => {
     handleFetch();
   }, []);
 
   const handleFetch = () => {
-    getTrending("movie", "week");
-    getPlayingNow();
-    getPopular();
-    getTopRated();
-    getComingSoon();
+    // getTrending("movie", "week");
+    // getPlayingNow();
+    // getPopular();
+    // getTopRated();
+    // getComingSoon();
+    getMovieDetails(loadedMovie);
   };
 
   const [width, setWidth] = useState(null);
@@ -51,6 +54,13 @@ const Movies = () => {
       .request(`${URL}/trending/${mediaType}/${timeWindow}?api_key=${API_KEY}`)
       .then(result => setTrending(result.data.results))
       .catch(error => console.log("error fetching trending details", error));
+  };
+
+  const getMovieDetails = id => {
+    axios
+      .request(`${MOVIE_URL}/${id}?api_key=${API_KEY}`)
+      .then(result => setFeaturedMovieDetails(result.data))
+      .catch(error => console.log("error fetching movie details", error));
   };
 
   const getPlayingNow = () => {
@@ -85,7 +95,8 @@ const Movies = () => {
 
   const baseStyle = {
     background: "transparent",
-    color: "white"
+    color: "white",
+    padding: 0
   };
 
   const handleGoToMovie = id => {
@@ -96,7 +107,7 @@ const Movies = () => {
   return (
     <Container fluid style={baseStyle}>
       <Row noGutters fluid>
-        <Featured movies={trending} />
+        <Featured movie={featuredMovieDetails} />
       </Row>
       <MovieSlider
         movies={playingNow}

@@ -23,6 +23,7 @@ const Trailers = ({ trailers }) => {
                       width="420"
                       height="315"
                       src={`https://www.youtube.com/embed/${trailer.key}`}
+                      style={{ border: "none" }}
                     />
                   </Col>
                 )
