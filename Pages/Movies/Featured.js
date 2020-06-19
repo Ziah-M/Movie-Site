@@ -6,6 +6,7 @@ import TrendingMoviesGridOverlay from "./TrendingMoviesGridOverlay";
 
 const Featured = ({
   movies,
+  toggleShowMoviePage,
   movie,
   movie: { vote_average = 0, title = "", backdrop_path = "" }
 }) => {
@@ -26,7 +27,7 @@ const Featured = ({
           <StyledImage
             src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
           />
-          <MovieDetailsOverlay movie={movie} />
+          <MovieDetailsOverlay movie={movie} toggleShowMoviePage={toggleShowMoviePage}/>
           <TrendingMoviesGridOverlay movies={movies} />
         </Col>
       </Row>

@@ -6,7 +6,7 @@ import useEventListener from "../../Hooks/useEventListener.js";
 import API_KEY from "../../private";
 import { theme } from "../../Theme";
 import Featured from "./Featured";
-import MovieSlider from "./MovieSlider";
+import MovieSlider from "../../Components/Slider/MovieSlider";
 
 const URL = "https://api.themoviedb.org/3";
 const MOVIE_URL = "https://api.themoviedb.org/3/movie";
@@ -28,7 +28,7 @@ const Movies = ({ toggleShowMoviePage }) => {
 
   const handleFetch = () => {
     getTrending("movie", "week");
-    // getPlayingNow();
+    getPlayingNow();
     // getPopular();
     // getTopRated();
     // getComingSoon();
@@ -106,9 +106,13 @@ const Movies = ({ toggleShowMoviePage }) => {
   };
 
   return (
-    <Container fluid style={baseStyle} onClick={() => toggleShowMoviePage()}>
+    <Container fluid style={baseStyle}>
       <Row noGutters fluid>
-        <Featured movie={featuredMovieDetails} movies={trending} />
+        <Featured
+          movie={featuredMovieDetails}
+          movies={trending}
+          toggleShowMoviePage={toggleShowMoviePage}
+        />
       </Row>
       <DarkSection fluid>
         <MovieSlider
@@ -154,7 +158,6 @@ const Movies = ({ toggleShowMoviePage }) => {
 // base style for sections
 const SectionBase = styled(Container)`
   padding: 20px;
-  width: 100vw;
   min-height: 200px;
   display: flex;
   justify-content: center;
@@ -168,7 +171,7 @@ const DarkSection = styled(SectionBase)`
 
 const LightSection = styled(SectionBase)`
   background-color: ${theme.white};
-  color: ${theme.white};
+  color: ${theme.darkBlue};
 `;
 
 export default Movies;

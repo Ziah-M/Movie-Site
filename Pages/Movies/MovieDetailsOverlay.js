@@ -10,6 +10,7 @@ import styled from "styled-components";
 import { theme } from "../../Theme";
 
 const MovieDetailsOverlay = ({
+  toggleShowMoviePage,
   movie: {
     title = "Grizzly Man",
     year = "2004",
@@ -34,7 +35,7 @@ const MovieDetailsOverlay = ({
     </Row>
     <Row noGutters>
       <Col xs={12}>
-        <WatchButton>Launch</WatchButton>
+        <WatchButton onClick={() => toggleShowMoviePage()}>Launch</WatchButton>
         <PlaylistButton>Playlist</PlaylistButton>
       </Col>
     </Row>
@@ -84,6 +85,10 @@ const PlaylistButton = styled.button`
   color: white;
   border: 1px solid white;
   margin: 0px 10px;
+  &:hover {
+    color: lightgray;
+    border: 1px solid lightgray;
+  }
 `;
 
 export default MovieDetailsOverlay;

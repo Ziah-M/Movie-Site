@@ -7,7 +7,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 // TODO - might want to use a bootstrap badge instead of my custom built rating overlay
 
 const MovieCard = ({
-  itemProps,
+  handleGoToMovie,
   movie: {
     title,
     original_language: genre,
@@ -18,7 +18,7 @@ const MovieCard = ({
 }) => {
   poster = `https://image.tmdb.org/t/p/original/${poster}`;
   return (
-    <StyledContainer fluid onClick={() => itemProps().handleGoToMovie(id)}>
+    <StyledContainer fluid onClick={() => handleGoToMovie(id)}>
       <Row noGutters>
         <Col xs={12}>
           <MoviePoster fluid src={poster} alt={title} />
@@ -32,13 +32,13 @@ const MovieCard = ({
 };
 
 const StyledContainer = styled(Container)`
-  height: 200px;
+  height: 100%;
+  width: 100%;
   padding: 0;
   font-size: 10px;
   position: relative;
   cursor: pointer;
   user-select: none;
-  margin: 0px 5px;
   &:hover {
     border: 2px solid skyblue;
   }
