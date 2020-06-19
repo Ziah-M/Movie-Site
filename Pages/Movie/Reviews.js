@@ -1,5 +1,11 @@
 import React from "react";
-import { Carousel, Container, Row, Col } from "react-bootstrap";
+import {
+  Carousel,
+  Container as UnstyledContainer,
+  Row,
+  Col
+} from "react-bootstrap";
+import styled from "styled-components";
 
 /*
 -Popular reviews
@@ -10,12 +16,20 @@ import { Carousel, Container, Row, Col } from "react-bootstrap";
 */
 
 const Reviews = ({ reviews }) => {
+  console.log(reviews);
   return (
-    <Container>
+    <Container
+      fluid
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+      }}
+    >
       <h1>Reviews:</h1>
-      <Carousel>
-        {reviews &&
-          reviews.map(review => {
+      {reviews && reviews.length > 0 ? (
+        <Carousel>
+          {reviews.map(review => {
             return (
               <Carousel.Item>
                 <Row>
@@ -34,9 +48,17 @@ const Reviews = ({ reviews }) => {
               </Carousel.Item>
             );
           })}
-      </Carousel>
+        </Carousel>
+      ) : (
+        <h3 style={{ color: "orange" }}>TMDB has no reviews for this movie.</h3>
+      )}
     </Container>
   );
 };
+
+const Container = styled(UnstyledContainer)`
+  padding: 0;
+  margin: 0;
+`;
 
 export default Reviews;

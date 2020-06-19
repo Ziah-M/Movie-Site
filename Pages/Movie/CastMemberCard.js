@@ -6,6 +6,9 @@ const CastMemberCard = ({
 }) => {
   const photoUrl = `https://image.tmdb.org/t/p/w200/${photo}`;
 
+  // fallback image in case there is no profile pic for an actor
+  const defaultPhotoUrl =
+    "https://image.tmdb.org/t/p/w600_and_h900_bestv2/kU3B75TyRiCgE270EyZnHjfivoq.jpg";
   return (
     <Container>
       <Row>
@@ -14,7 +17,11 @@ const CastMemberCard = ({
             <Card.Title>{name}</Card.Title>
             <Card.Subtitle>{character}</Card.Subtitle>
             <Card.Body>
-              <Card.Img src={photoUrl} />
+              {photo ? (
+                <Card.Img src={photoUrl} alt={`${name} Profile Pic`} />
+              ) : (
+                <Card.Img src={defaultPhotoUrl} alt={`Default Profile Pic`} />
+              )}
             </Card.Body>
             <Card />
           </Card>
