@@ -10,7 +10,10 @@ import {
 } from "react-bootstrap";
 import styled from "styled-components";
 
-const TrendingMoviesGridOverlay = ({ movies = [{}] }) => (
+const TrendingMoviesGridOverlay = ({
+  handleLoadMovie = () => null,
+  movies = [{}]
+}) => (
   <StyledContainer>
     {movies && (
       <Row
@@ -22,7 +25,7 @@ const TrendingMoviesGridOverlay = ({ movies = [{}] }) => (
           (movie, index) =>
             index < 9 && (
               <Col xs={4}>
-                <MovieCard movie={movie} />
+                <MovieCard movie={movie} handleLoadMovie={handleLoadMovie} />
               </Col>
             )
         )}
@@ -37,11 +40,14 @@ const StyledContainer = styled(Container)`
   left: 70%;
 `;
 
-const MovieCard = ({ movie: { poster_path, title } }) => {
+const MovieCard = ({
+  handleLoadMovie = () => null,
+  movie: { poster_path, title, id }
+}) => {
   const imgSrc = `https://image.tmdb.org/t/p/original/${poster_path}`;
   return (
     <ContainerImg fluid>
-      <StyledCardImg src={imgSrc} alt="" />
+      <StyledCardImg src={imgSrc} alt="" onClick={() => handleLoadMovie(id)} />
     </ContainerImg>
   );
 };
@@ -54,6 +60,9 @@ const ContainerImg = styled(Container)`
 const StyledCardImg = styled(Image)`
   height: 9vw;
   width: 7vw;
+  &:hover {
+    border: 2px solid skyblue;
+  }
 `;
 
 export default TrendingMoviesGridOverlay;

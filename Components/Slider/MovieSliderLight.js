@@ -7,6 +7,12 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
+const theme = {
+  borderColors: "",
+  textColor: "",
+  arrowColors: ""
+};
+
 const MovieSlider = ({ movies, title, handleGoToMovie }) => {
   const settings = {
     dots: true,
@@ -31,25 +37,11 @@ const MovieSlider = ({ movies, title, handleGoToMovie }) => {
     <>
       <Container fluid className="p-0">
         <Row noGutters>
-          <Col>
-            {movies && (
-              <Slider ref={c => (sliderRef = c)} {...settings}>
-                {movies.map(movie => (
-                  <Col className="p-2">
-                    <MovieCard
-                      movie={movie}
-                      handleGoToMovie={handleGoToMovie}
-                    />
-                  </Col>
-                ))}
-              </Slider>
-            )}
-          </Col>
           <Col xs={4}>
             <SideContainer fluid>
-              <Col xs={3} style={{ borderTop: "1px solid white" }} />
+              <Col xs={3} style={{ borderTop: "1px solid gray" }} />
               <Row>
-                <h2>{title}</h2>
+                <h2 style={{ color: "darkslategray" }}>{title}</h2>
               </Row>
               <Row noGutters>
                 <Col xs={2}>
@@ -64,11 +56,29 @@ const MovieSlider = ({ movies, title, handleGoToMovie }) => {
                 </Col>
               </Row>
               <Row
-                style={{ borderTop: "1px solid grey", padding: "15px 0 0 0" }}
+                style={{
+                  color: "darkslategray",
+                  borderTop: "1px solid grey",
+                  padding: "15px 0 0 0"
+                }}
               >
                 VIEW ALL >
               </Row>
             </SideContainer>
+          </Col>
+          <Col>
+            {movies && (
+              <Slider ref={c => (sliderRef = c)} {...settings}>
+                {movies.map(movie => (
+                  <Col className="p-2">
+                    <MovieCard
+                      movie={movie}
+                      handleGoToMovie={handleGoToMovie}
+                    />
+                  </Col>
+                ))}
+              </Slider>
+            )}
           </Col>
         </Row>
       </Container>

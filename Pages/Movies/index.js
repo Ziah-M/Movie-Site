@@ -7,93 +7,19 @@ import API_KEY from "../../private";
 import { theme } from "../../Theme";
 import Featured from "./Featured";
 import MovieSlider from "../../Components/Slider/MovieSlider";
+import MovieSliderLight from "../../Components/Slider/MovieSliderLight";
 
-const URL = "https://api.themoviedb.org/3";
-const MOVIE_URL = "https://api.themoviedb.org/3/movie";
-
-const Movies = ({ toggleShowMoviePage }) => {
-  const [trending, setTrending] = useState(null);
-  const [playingNow, setPlayingNow] = useState(null);
-  const [popular, setPopular] = useState(null);
-  const [topRated, setTopRated] = useState(null);
-  const [comingSoon, setComingSoon] = useState(null);
-  const [featuredMovieDetails, setFeaturedMovieDetails] = useState({});
-
-  //Temporary until I use routing with query params for this
-  const [loadedMovie, setLoadedMovie] = useState(501);
-
-  useEffect(() => {
-    handleFetch();
-  }, []);
-
-  const handleFetch = () => {
-    getTrending("movie", "week");
-    getPlayingNow();
-    // getPopular();
-    // getTopRated();
-    // getComingSoon();
-    getMovieDetails(loadedMovie);
-  };
-
-  const [width, setWidth] = useState(null);
-
-  // RESIZE SIDE EFFECT
-  // Determines items per slide
-  const handleResize = useCallback(() => {
-    setWidth(window.innerWidth);
-  }, [setWidth]);
-
-  useEventListener("resize", handleResize);
-
-  // HACK TO MAKE SURE RESIZE RUNS ON MOUNT TO SET SCROLL PROPERLY
-  useEffect(() => {
-    handleResize();
-  }, []);
-
-  const getTrending = (mediaType, timeWindow) => {
-    axios
-      .request(`${URL}/trending/${mediaType}/${timeWindow}?api_key=${API_KEY}`)
-      .then(result => setTrending(result.data.results))
-      .catch(error => console.log("error fetching trending details", error));
-  };
-
-  const getMovieDetails = id => {
-    axios
-      .request(`${MOVIE_URL}/${id}?api_key=${API_KEY}`)
-      .then(result => setFeaturedMovieDetails(result.data))
-      .catch(error => console.log("error fetching movie details", error));
-  };
-
-  const getPlayingNow = () => {
-    axios
-      .request(`${URL}/movie/now_playing?api_key=${API_KEY}`)
-      .then(result => setPlayingNow(result.data.results))
-      .catch(error =>
-        console.log("error fetching get playing now details", error)
-      );
-  };
-
-  const getPopular = () => {
-    axios
-      .request(`${URL}/movie/popular?api_key=${API_KEY}`)
-      .then(result => setPopular(result.data.results))
-      .catch(error => console.log("error fetching get popular details", error));
-  };
-
-  const getTopRated = () => {
-    axios
-      .request(`${URL}/movie/top_rated?api_key=${API_KEY}`)
-      .then(result => setTopRated(result.data.results))
-      .catch(error => console.log("error fetching top rated details", error));
-  };
-
-  const getComingSoon = () => {
-    axios
-      .request(`${URL}/movie/upcoming?api_key=${API_KEY}`)
-      .then(result => setComingSoon(result.data.results))
-      .catch(error => console.log("error fetching coming soon details", error));
-  };
-
+const Movies = ({
+  toggleShowMoviePage,
+  handleLoadMovie = () => null,
+  featuredMovieDetails,
+  trending,
+  playingNow,
+  comingSoon,
+  featuredMovie,
+  topRated,
+  popular
+}) => {
   const baseStyle = {
     background: "transparent",
     color: "white",
@@ -102,16 +28,17 @@ const Movies = ({ toggleShowMoviePage }) => {
 
   const handleGoToMovie = id => {
     console.log("Loading Movie with ID:", id);
-    setLoadedMovie(id);
+    handleLoadMovie(id);
   };
 
   return (
     <Container fluid style={baseStyle}>
       <Row noGutters fluid>
         <Featured
-          movie={featuredMovieDetails}
+          movie={featuredMovie}
           movies={trending}
           toggleShowMoviePage={toggleShowMoviePage}
+          handleLoadMovie={handleLoadMovie}
         />
       </Row>
       <DarkSection fluid>
@@ -120,17 +47,15 @@ const Movies = ({ toggleShowMoviePage }) => {
           title="In Cinemas Now"
           baseStyle={baseStyle}
           handleGoToMovie={handleGoToMovie}
-          width={width}
         />
       </DarkSection>
 
       <LightSection fluid>
-        <MovieSlider
+        <MovieSliderLight
           movies={comingSoon}
           title="Coming Soon"
           baseStyle={baseStyle}
           handleGoToMovie={handleGoToMovie}
-          width={width}
         />
       </LightSection>
       <DarkSection fluid>
@@ -139,16 +64,14 @@ const Movies = ({ toggleShowMoviePage }) => {
           title="Popular"
           baseStyle={baseStyle}
           handleGoToMovie={handleGoToMovie}
-          width={width}
         />
       </DarkSection>
       <LightSection fluid>
-        <MovieSlider
+        <MovieSliderLight
           movies={topRated}
           title="Top Rated"
           baseStyle={baseStyle}
           handleGoToMovie={handleGoToMovie}
-          width={width}
         />
       </LightSection>
     </Container>
