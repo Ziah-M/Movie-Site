@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Summary = () => {
+const BackButton = () => {
     return (
         <div>
-            Summary
+            Back Button
         </div>
     )
 }
 
-export default Summary
+export default BackButton

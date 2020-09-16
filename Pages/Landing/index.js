@@ -1,49 +1,29 @@
-import React, { useState } from "react";
-import { Container } from "react-bootstrap";
-import MoviePage from "../Movie";
-import Movies from "../Movies";
+import React from "react";
+import {LandingCarousel} from "../../Components";
+import {LandingButton} from "../../Components";
+import {LandingSlider} from "../../Components";
+import {LandingNavbar as Navbar} from "../../Components";
+import Footer from "./Footer";
 
-const baseStyle = {
-  background: "transparent",
-  color: "white"
-};
-
-const Landing = props => {
-  //TODO: Dummy data while building the Movie Page
-  //This should come from the URL query parameter
-  const [loadedMovie, setLoadedMovie] = useState(501);
-  const [showMoviePage, setShowMoviePage] = useState(false);
-
-  // TODO -> REPLACE WITH ROUTING -- TEMPORARY FOR BUILD PROTOTYPING PURPOSES ONLY
-  const toggleShowMoviePage = () => {
-    // TODO - temporary hack to reset loaded movie when going back to Movies Page
-    if (showMoviePage === true) {
-      setLoadedMovie(501);
-    }
-    setShowMoviePage(!showMoviePage);
-  };
-
-  const handleLoadMovie = id => {
-    setLoadedMovie(id);
-    setShowMoviePage(true);
-  };
-
+const Landing = () => {
   return (
-    <Container className="p-0" style={baseStyle} fluid>
-      {showMoviePage && (
-        <MoviePage
-          loadedMovie={loadedMovie}
-          toggleShowMoviePage={toggleShowMoviePage}
-        />
-      )}
-      {!showMoviePage && (
-        <Movies
-          toggleShowMoviePage={toggleShowMoviePage}
-          handleLoadMovie={handleLoadMovie}
-          {...props}
-        />
-      )}
-    </Container>
+    <div>
+      <Navbar />
+      <LandingCarousel />
+      <section id="select-category">
+        <LandingButton>Movies</LandingButton>
+        <LandingButton>TV Shows</LandingButton>
+      </section>
+      <section id="categories">
+        {/* MAP with heading for category and data */}
+        <h2>Upcoming</h2>
+        <br />
+        <LandingSlider />
+        <br />
+        <div id="divider">------</div>
+      </section>
+      <Footer />
+    </div>
   );
 };
 

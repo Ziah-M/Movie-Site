@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Summary = () => {
+const Roles = () => {
     return (
         <div>
-            Summary
+            Roles
         </div>
     )
 }
 
-export default Summary
+export default Roles

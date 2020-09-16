@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Summary = () => {
+const Profile = () => {
     return (
         <div>
-            Summary
+            Profile
         </div>
     )
 }
 
-export default Summary
+export default Profile

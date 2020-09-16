@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Summary = () => {
+const LikeButton = () => {
     return (
         <div>
-            Summary
+            LikeButton
         </div>
     )
 }
 
-export default Summary
+export default LikeButton

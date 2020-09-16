@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Summary = () => {
+const SocialBar = () => {
     return (
         <div>
-            Summary
+            Social Bar
         </div>
     )
 }
 
-export default Summary
+export default SocialBar

@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Summary = () => {
+const SocialButton = () => {
     return (
         <div>
-            Summary
+            Social Button
         </div>
     )
 }
 
-export default Summary
+export default SocialButton

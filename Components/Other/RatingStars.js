@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Summary = () => {
+const RatingStars = () => {
     return (
         <div>
-            Summary
+            Rating Stars
         </div>
     )
 }
 
-export default Summary
+export default RatingStars
