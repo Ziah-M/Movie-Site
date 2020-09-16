@@ -16,8 +16,8 @@ const settings = {
   slidesToShow: 5,
   slidesToScroll: 3,
   pauseOnHover: true,
-  centrePadding: "2vw",
   centerMode: true,
+  centerPadding:'2vw',
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
 
@@ -58,47 +58,39 @@ const MovieSection = styled.div`
 const Title = styled.div`
   color: white;
   opacity: 0.6;
-  margin: 5px 0;
-  font-size: 16px;
+  margin: 5px 0 0 5px;
+  font-size: 14px;
   font-weight: 500;
-  max-width: 10vw;
+  max-width:10vw;
 `;
 
 const Genres = styled.div`
   color: white;
   opacity: 0.6;
   font-size: 12px;
-  max-width: 10vw;
 `;
 
-const LandingSlider = ({ category }) => {
-  const movies = [
-    getDefault().movie,
-    getDefault().movie,
-    getDefault().movie,
-    getDefault().movie,
-    getDefault().movie,
-    getDefault().movie,
-
-    getDefault().movie,
-
-    getDefault().movie,
-
-    getDefault().movie,
+const CastSlider = ({ cast }) => {
+   cast = [
+    getDefault().movie.cast[0],
+    getDefault().movie.cast[0],
+    getDefault().movie.cast[0],
+    getDefault().movie.cast[0],
+    getDefault().movie.cast[0],
+    getDefault().movie.cast[0],
+    getDefault().movie.cast[0],
+  
+   
   ];
   return (
     <Wrapper>
       <Slider {...settings}>
-        {movies.map((movie) => (
+        {cast.map((actor) => (
           <MovieSection>
             <MovieCard>
-              <Overlay>
-                <MovieRatingOverlay rating={movie.rating} />
-              </Overlay>
-              <MovieCardSmall className="rounded"></MovieCardSmall>
+              <MovieCardSmall className="rounded" url={actor.imgProfile}></MovieCardSmall>
             </MovieCard>
-            <Title>{movie.title}</Title>
-            <Genres>{movie.genres}</Genres>
+            <Title>{actor.name}</Title>
           </MovieSection>
         ))}
       </Slider>
@@ -141,4 +133,4 @@ function PrevArrow(props) {
   );
 }
 
-export default LandingSlider;
+export default CastSlider;

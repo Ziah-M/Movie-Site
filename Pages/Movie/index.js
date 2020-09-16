@@ -9,8 +9,13 @@ import styled from "styled-components";
 
 const Section = styled.div`
   width: 100vw;
-  margin: 50px 0;
+  margin: 100px 0 0 0;
+  padding:0 15vw;
 `;
+
+const Wrapper=styled.div`
+  padding-bottom:100px;
+`
 
 const Movie = ({ movie = getDefault().movie }) => {
   const {
@@ -25,7 +30,7 @@ const Movie = ({ movie = getDefault().movie }) => {
   } = movie;
 
   return (
-    <div>
+    <Wrapper>
       <Cover movie={movie} />
       <Section>
         <Summary summary={summary} />
@@ -39,7 +44,7 @@ const Movie = ({ movie = getDefault().movie }) => {
       <Section>
         <Reviews reviews={reviews} />
       </Section>
-    </div>
+    </Wrapper>
   );
 };
 

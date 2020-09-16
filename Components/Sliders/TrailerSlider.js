@@ -13,10 +13,9 @@ const settings = {
   dots: false,
   infinite: true,
   speed: 800,
-  slidesToShow: 5,
-  slidesToScroll: 3,
+  slidesToShow: 1,
+  slidesToScroll: 1,
   pauseOnHover: true,
-  centrePadding: "2vw",
   centerMode: true,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
@@ -61,18 +60,16 @@ const Title = styled.div`
   margin: 5px 0;
   font-size: 16px;
   font-weight: 500;
-  max-width: 10vw;
 `;
 
 const Genres = styled.div`
   color: white;
   opacity: 0.6;
   font-size: 12px;
-  max-width: 10vw;
 `;
 
-const LandingSlider = ({ category }) => {
-  const movies = [
+const TrailerSlider = ({ trailers }) => {
+  trailers = [
     getDefault().movie,
     getDefault().movie,
     getDefault().movie,
@@ -89,16 +86,9 @@ const LandingSlider = ({ category }) => {
   return (
     <Wrapper>
       <Slider {...settings}>
-        {movies.map((movie) => (
+        {trailers.map((trailers) => (
           <MovieSection>
-            <MovieCard>
-              <Overlay>
-                <MovieRatingOverlay rating={movie.rating} />
-              </Overlay>
-              <MovieCardSmall className="rounded"></MovieCardSmall>
-            </MovieCard>
-            <Title>{movie.title}</Title>
-            <Genres>{movie.genres}</Genres>
+            <MovieCard></MovieCard>
           </MovieSection>
         ))}
       </Slider>
@@ -141,4 +131,4 @@ function PrevArrow(props) {
   );
 }
 
-export default LandingSlider;
+export default TrailerSlider;

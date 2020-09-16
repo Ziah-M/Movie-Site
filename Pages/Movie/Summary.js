@@ -6,11 +6,17 @@ const Wrapper = styled.div`
   width: 100%;
   color: white;
 `;
+
+const Text = styled.div`
+  font-size: 18px;
+  margin-top: 15px;
+`;
+
 const Summary = ({ summary }) => {
   return (
     <Wrapper>
       <h1>SUMMARY</h1>
-      <p>{summary}</p>
+      <Text>{summary}</Text>
     </Wrapper>
   );
 };

@@ -26,17 +26,18 @@ const Overlay = styled.div`
 `;
 
 const Details = styled.div`
+  margin-left: 5vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 200px;
-  width: 200px;
+  height: auto;
+  width: auto;
 `;
 
 const Position = styled.div`
@@ -65,6 +66,27 @@ const Position = styled.div`
   }
 `;
 
+const MovieCard = styled.div`
+  width: 13vw;
+  height: calc(1.5 * 13 vw);
+`;
+
+const Title = styled.div`
+  font-size: 35px;
+  font-weight: 600;
+`;
+
+const Released = styled.div`
+  font-size: 22px;
+  margin: 15px 0;
+`;
+
+const Genres = styled.div`
+  color: #bfbfbf;
+  font-weight: 500;
+  font-size: 18px;
+`;
+
 const Cover = ({ actor }) => {
   const { name, rating, gender, profession, DOB, age, imgPosterLarge } = actor;
   return (
@@ -78,13 +100,17 @@ const Cover = ({ actor }) => {
       </Position>
       <Position className="bl">
         <Container>
-          <MovieCardSmall className='rounded' />
+          <MovieCard>
+            <MovieCardSmall className="rounded" />
+          </MovieCard>
           <Details>
-            <h1>{name}</h1>
-            {rating} <RatingStars rating={rating} />
-            {gender} | {profession}
-            <br />
-            {DOB} | {age} yo
+            <Title>{name}</Title>
+            <Released>
+              {gender} | {profession}
+            </Released>
+            <Genres>
+              {DOB} &nbsp;&nbsp;| &nbsp;&nbsp;{age}
+            </Genres>
           </Details>
         </Container>
       </Position>

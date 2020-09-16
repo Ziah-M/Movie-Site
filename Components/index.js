@@ -11,6 +11,8 @@ import SocialButton from './Buttons/SocialButton'
 import LikeButton from './Buttons/LikeButton'
 import RatingStars from './Other/RatingStars'
 import SocialBar from './Other/SocialBar'
+import CastSlider from './Sliders/CastSlider'
+import TrailerSlider from './Sliders/TrailerSlider'
 
 export {
   LandingButton,
@@ -26,4 +28,6 @@ export {
   LikeButton,
   RatingStars,
   SocialBar,
+  CastSlider,
+  TrailerSlider,
 };

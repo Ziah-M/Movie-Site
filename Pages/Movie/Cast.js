@@ -1,16 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import {CastSlider} from '../../Components'
 
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
 `;
 
-const Cast = () => {
+const Title=styled.div`
+margin-bottom:25px;
+font-size:40px;
+text-transform:uppercase;
+`
+
+const Cast = ({cast}) => {
     return (
         <Wrapper>
-            <h1>CAST</h1>
-            cast slider
+            <Title>CAST</Title>
+            <CastSlider cast={cast}/>
         </Wrapper>
     )
 }
