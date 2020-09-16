@@ -19,10 +19,25 @@ const Section = styled.div`
   }
 
   &#categories {
-    height: auto;
-    padding: 30px 10vw;
+  
+  }
+
+  &#select-category{
+    display:flex;
+    height:150px;
+    justify-content: center;
+    align-items: center;
   }
 `;
+
+const Category=styled.div`
+height: auto;
+    padding: 0 10vw 50px 10vw;
+`
+
+const CategoryTitle=styled.h2`
+  text-transform:uppercase;
+`
 
 const Landing = ({ categories = getCategories() }) => {
   return (
@@ -33,20 +48,20 @@ const Landing = ({ categories = getCategories() }) => {
       <Section id="carousel">
         <LandingCarousel />
       </Section>
-      <section id="select-category">
+      <Section id="select-category">
         <LandingButton>Movies</LandingButton>
         <LandingButton>TV Shows</LandingButton>
-      </section>
+      </Section>
       <Section id="categories">
         {/* MAP with heading for category and data */}
         {categories.map((category) => (
-          <>
-            <h2 style={{ textTransform: "uppercase" }}>{category}</h2>
+          <Category>
+            <CategoryTitle >{category}</CategoryTitle>
             <br />
             <LandingSlider category={category} />
             <br />
             <div id="divider">------</div>
-          </>
+          </Category>
         ))}
       </Section>
       <Footer />

@@ -16,8 +16,8 @@ const MovieCard = styled.div`
   position: relative;
 
   /* aspect ratio of card */
-  width: 10vw;
-  height: calc(1.481 * 10 vw);
+  width: 13vw;
+  height: calc(1.5 * 13 vw);
 `;
 
 const Overlay = styled.div`
@@ -25,6 +25,26 @@ const Overlay = styled.div`
   top: 5%;
   left: 0;
 `;
+
+const MovieSection=styled.div`
+  height:auto;
+  width:13vw;
+`
+
+const Title=styled.div`
+color:white;
+opacity:0.6;
+margin:5px 0;
+font-size:16px;
+font-weight:500;
+`
+
+const Genres=styled.div`
+color:white;
+opacity:0.6;
+font-size:12px;
+`
+
 
 const LandingSlider = ({ category }) => {
   const movies = [
@@ -37,12 +57,20 @@ const LandingSlider = ({ category }) => {
   return (
     <Wrapper>
       {movies.map((movie) => (
-        <MovieCard>
-          <Overlay>
-            <MovieRatingOverlay />
-          </Overlay>
-          <MovieCardSmall></MovieCardSmall>
-        </MovieCard>
+        <MovieSection>
+          <MovieCard>
+            <Overlay>
+              <MovieRatingOverlay rating={movie.rating}/>
+            </Overlay>
+            <MovieCardSmall className='rounded'></MovieCardSmall>
+          </MovieCard>
+        <Title>
+        {movie.title}
+        </Title>
+        <Genres>
+        {movie.genres}
+        </Genres>
+        </MovieSection>
       ))}
     </Wrapper>
   );

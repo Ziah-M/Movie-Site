@@ -11,6 +11,10 @@ const DetailsOverlay = styled.div`
   left: 5%;
   bottom: 5%;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
 `;
 
 const DarkOverlay = styled.div`
@@ -36,6 +40,22 @@ const Img = styled.img`
   height: 100%;
 `;
 
+const Category = styled.h2`
+  text-transform: uppercase;
+  font-size: 18px;
+`;
+
+const Title = styled.h1`
+  text-transform: capitalize;
+  font-size: 32px;
+  font-weight: 500;
+`;
+
+const SubDetails = styled.h3`
+  text-transform: capitalize;
+  font-size: 18px;
+`;
+
 const LandingCarousel = ({
   url = "https://www.turnerpublishing.net/news/wp-content/uploads/2020/09/tenet-11-700x364.jpg",
   category = "latest",
@@ -50,13 +70,11 @@ const LandingCarousel = ({
         <Img src={url} alt="Movie Poster" />
       </Image>
       <DetailsOverlay>
-        <h2 style={{textTransform:'uppercase'}}>{category}</h2>
-        <h1>{title}</h1>
-        <div id="row">
-          <h4>
-            {genre} | {rating} Rating
-          </h4>
-        </div>
+        <Category>{category}</Category>
+        <Title>{title}</Title>
+        <SubDetails>
+          {genre} | {rating} Rating
+        </SubDetails>
       </DetailsOverlay>
     </Wrapper>
   );

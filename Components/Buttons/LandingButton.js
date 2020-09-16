@@ -1,35 +1,52 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
-const Wrapper=styled.div`
-width:40vw;
-height:5vw;
-background:linear-gradient(90deg, rgba(255, 86, 132, 0.4) 0%, rgba(83, 50, 201, 0.4) 68%), linear-gradient(90deg, rgba(255, 86, 132, 0.4) 0%, rgba(83, 50, 201, 0.4) 68%);
-border-left:3px solid rgba(255, 86, 132, 0.4);
-border-right:3px solid rgba(83, 50, 201, 0.4);
-padding:3px;
-border-radius:10px;
-display:inline-block;
-margin:10px;
-`
+const Wrapper = styled.div`
+  width: 35vw;
+  height: 5vw;
+  background: linear-gradient(
+      90deg,
+      rgba(255, 86, 132, 0.4) 0%,
+      rgba(83, 50, 201, 0.4) 68%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 86, 132, 0.4) 0%,
+      rgba(83, 50, 201, 0.4) 68%
+    );
+  /* border-left:3px solid rgba(255, 86, 132, 0.4); */
+  /* border-right:3px solid rgba(83, 50, 201, 0.4); */
+  border-radius: 10px;
+  display: inline-block;
+  padding: 3px;
+  margin: 0 10px;
+`;
 
-const Button=styled.button`
-background:purple;
-border:none;
-height:100%;
-width:100%;
-border-radius:10px;
-color:white;
-`
+const Button = styled.button`
+  background: linear-gradient(165deg, #251431 0%, #161130 22%);
+  border: none;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+`;
 
-const LandingButton = ({children}) => {
-    return (
-        <Wrapper>
-            <Button>
-                {children}
-            </Button>
-        </Wrapper>
-    )
-}
+const BorderWrap = styled.div`
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
 
-export default LandingButton
+  background: #eb4e7a;
+`;
+
+const LandingButton = ({ children }) => {
+  return (
+    <Wrapper>
+      <BorderWrap>
+        <Button>{children}</Button>
+      </BorderWrap>
+    </Wrapper>
+  );
+};
+
+export default LandingButton;

@@ -46,23 +46,23 @@ const Position = styled.div`
   position: absolute;
 
   &.tl {
-    top: 5vw;
-    left: 5vw;
+    top: 10vw;
+    left: 10vw;
   }
 
   &.tr {
-    top: 5vw;
-    right: 5vw;
+    top: 10vw;
+    right: 10vw;
   }
 
   &.bl {
-    bottom: 5vw;
-    left: 5vw;
+    bottom: 10vw;
+    left: 10vw;
   }
 
   &.br {
-    bottom: 5vw;
-    right: 5vw;
+    bottom: 10vw;
+    right: 10vw;
   }
 `;
 
@@ -82,7 +82,7 @@ const Cover = ({ movie }) => {
       </Position>
       <Position className="bl">
         <Container>
-          <MovieCardSmall />
+          <MovieCardSmall className='rounded' />
           <Details>
             <h1>{title}</h1>
             {rating} <RatingStars rating={rating} />
