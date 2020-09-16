@@ -9,7 +9,7 @@ import MovieRatingOverlay from "./Other/MovieRatingOverlay";
 import BackButton from './Buttons/BackButton'
 import SocialButton from './Buttons/SocialButton'
 import LikeButton from './Buttons/LikeButton'
-import RatingStars from './Other'
+import RatingStars from './Other/RatingStars'
 import SocialBar from './Other/SocialBar'
 
 export {

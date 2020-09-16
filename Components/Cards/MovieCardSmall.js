@@ -1,11 +1,27 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
+import { getDefault } from "../../Data";
 
-const MovieCardSmall = () => {
-    return (
-        <div>
-            MovieCardSmall
-        </div>
-    )
-}
+const Wrapper = styled.div`
+  height: 100%;
+  width: 100%;
+`;
 
-export default MovieCardSmall
+const Img=styled.img`
+  width:100%;
+  height:100%;
+`
+
+const MovieCardSmall = ({
+  url = getDefault().movie.imgPosterSmall,
+  children,
+}) => {
+  return (
+    <Wrapper>
+      <Img src={url} />
+      {children}
+    </Wrapper>
+  );
+};
+
+export default MovieCardSmall;

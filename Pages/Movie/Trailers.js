@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  height: 100%;
+  width: 100%;
+`;
 
 const Trailers = () => {
-    return (
-        <div>
-            Trailers
-        </div>
-    )
-}
+  return <Wrapper>
+      <h1>TRAILERS</h1>
+      <br />
+      trailer slider
+  </Wrapper>;
+};
 
-export default Trailers
+export default Trailers;

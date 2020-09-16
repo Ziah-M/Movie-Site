@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
 
-const MovieRatingOverlay = () => {
-    return (
-        <div>
-            Overlay
-        </div>
-    )
-}
+const Wrapper = styled.div`
+  height: 30px;
+  width: 50px;
+  background: black;
+  opacity: 0.8;
+  color: white;
+`;
 
-export default MovieRatingOverlay
+const MovieRatingOverlay = ({ rating=0 }) => {
+  return <Wrapper>STAR {rating}</Wrapper>;
+};
+
+export default MovieRatingOverlay;
