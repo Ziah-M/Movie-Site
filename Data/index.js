@@ -3,14 +3,14 @@
 const DEFAULT = {
   movie: {
     title: "Tenet",
-    rating: "3.6",
-    genres: ["Action"],
+    vote_average: "3.6",
+    genre_ids: ["Action"],
     language: "EN",
-    imgPosterLarge:
+    backdrop_path:
       "https://www.turnerpublishing.net/news/wp-content/uploads/2020/09/tenet-11-700x364.jpg",
-    imgPosterSmall:
+    poster_path:
       "https://i.ebayimg.com/images/g/gRMAAOSwXVxe~Qs7/s-l640.jpg",
-    summary:
+    overview:
       "A professional thief with $40 million in debt and his family's life on the line must commit one final heist - rob a futuristic airborne casino filled with the world's most dangerous criminals.",
     trailers: [""],
     reviews: [

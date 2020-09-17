@@ -8,6 +8,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { withMovieDetails } from "../../Hocs";
 
 const settings = {
   dots: false,
@@ -64,41 +65,30 @@ const Title = styled.div`
   max-width: 10vw;
 `;
 
-const Genres = styled.div`
+const GenresWrapper = styled.div`
   color: white;
   opacity: 0.6;
   font-size: 12px;
   max-width: 10vw;
 `;
 
-const LandingSlider = ({ category }) => {
-  const movies = [
-    getDefault().movie,
-    getDefault().movie,
-    getDefault().movie,
-    getDefault().movie,
-    getDefault().movie,
-    getDefault().movie,
-
-    getDefault().movie,
-
-    getDefault().movie,
-
-    getDefault().movie,
-  ];
+const LandingSlider = ({ movies }) => {
   return (
     <Wrapper>
       <Slider {...settings}>
-        {movies.map((movie) => (
-          <MovieSection>
+        {movies.map((movie,index) => (
+          <MovieSection key={`landing-slider-${index}`}>
             <MovieCard>
               <Overlay>
-                <MovieRatingOverlay rating={movie.rating} />
+                <MovieRatingOverlay rating={movie.vote_average} />
               </Overlay>
-              <MovieCardSmall className="rounded"></MovieCardSmall>
+              <MovieCardSmall
+                className="rounded"
+                url={movie.poster_path}
+              ></MovieCardSmall>
             </MovieCard>
             <Title>{movie.title}</Title>
-            <Genres>{movie.genres}</Genres>
+            <FetchedGenres id={movie.id}></FetchedGenres>
           </MovieSection>
         ))}
       </Slider>
@@ -140,5 +130,13 @@ function PrevArrow(props) {
     />
   );
 }
+
+const Genres = ({ movieDetails = null }) => {
+  return (
+    <GenresWrapper>{movieDetails && movieDetails.genres[0].name}</GenresWrapper>
+  );
+};
+
+const FetchedGenres = withMovieDetails(Genres);
 
 export default LandingSlider;

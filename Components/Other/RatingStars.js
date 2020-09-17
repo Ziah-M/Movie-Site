@@ -9,20 +9,29 @@ const Wrapper = styled.div`
   display: inline;
 `;
 
-const Star = ({ active = false }) => (
-  <StyledStar icon={faStar} active={active} />
+const Star = ({ isRated = false }) => (
+  <StyledStar
+    icon={faStar}
+    className={`${isRated ? "is-rated" : ""}`}
+  />
 );
 
 const StyledStar = styled(FontAwesomeIcon)`
   font-size: 20px;
-  color: ${(props) => (props.active ? "#24baef" : "white")};
+  color: white;
+  &.is-rated {
+    color: #24baef;
+  }
 `;
 
 const RatingStars = ({ rating = 1 }) => {
   return (
     <Wrapper>
       {[...Array(5)].map((item, index) => (
-        <Star active={index <= rating - 1 + 0.4} />
+        <Star
+          key={`star-key-${index}`}
+          isRated={index + 1 <= rating / 2 + 0.4}
+        />
       ))}
     </Wrapper>
   );

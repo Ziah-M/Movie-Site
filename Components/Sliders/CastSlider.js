@@ -17,7 +17,7 @@ const settings = {
   slidesToScroll: 3,
   pauseOnHover: true,
   centerMode: true,
-  centerPadding:'2vw',
+  centerPadding: "2vw",
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
 
@@ -61,7 +61,7 @@ const Title = styled.div`
   margin: 5px 0 0 5px;
   font-size: 14px;
   font-weight: 500;
-  max-width:10vw;
+  max-width: 10vw;
 `;
 
 const Genres = styled.div`
@@ -70,25 +70,17 @@ const Genres = styled.div`
   font-size: 12px;
 `;
 
-const CastSlider = ({ cast }) => {
-   cast = [
-    getDefault().movie.cast[0],
-    getDefault().movie.cast[0],
-    getDefault().movie.cast[0],
-    getDefault().movie.cast[0],
-    getDefault().movie.cast[0],
-    getDefault().movie.cast[0],
-    getDefault().movie.cast[0],
-  
-   
-  ];
+const CastSlider = ({ cast = [] }) => {
   return (
     <Wrapper>
       <Slider {...settings}>
-        {cast.map((actor) => (
-          <MovieSection>
+        {cast && cast.map((actor, index) => (
+          <MovieSection key={`cast-slider-${index}`}>
             <MovieCard>
-              <MovieCardSmall className="rounded" url={actor.imgProfile}></MovieCardSmall>
+              <MovieCardSmall
+                className="rounded"
+                url={actor.profile_path}
+              ></MovieCardSmall>
             </MovieCard>
             <Title>{actor.name}</Title>
           </MovieSection>

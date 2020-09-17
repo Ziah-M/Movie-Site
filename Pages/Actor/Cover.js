@@ -87,10 +87,25 @@ const Genres = styled.div`
   font-size: 18px;
 `;
 
-const Cover = ({ actor }) => {
-  const { name, rating, gender, profession, DOB, age, imgPosterLarge } = actor;
+const Cover = ({ actor, backdrop_path }) => {
+  const {
+    name,
+    rating,
+    gender,
+    known_for_department,
+    birthday,
+    profile_path,
+  } = actor;
+
+  const genderString = gender === 2 ? "Male" : "Female";
+
+  const year = new Date().getFullYear();
+  const age = year - parseInt(birthday.substr(0, 4));
+
+  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
+
   return (
-    <Wrapper url={imgPosterLarge}>
+    <Wrapper url={imageUrl}>
       <Overlay />
       <Position className="tl">
         <BackButton />
@@ -101,15 +116,15 @@ const Cover = ({ actor }) => {
       <Position className="bl">
         <Container>
           <MovieCard>
-            <MovieCardSmall className="rounded" />
+            <MovieCardSmall className="rounded" url={profile_path} />
           </MovieCard>
           <Details>
             <Title>{name}</Title>
             <Released>
-              {gender} | {profession}
+              {genderString} &nbsp;|&nbsp; {known_for_department}
             </Released>
             <Genres>
-              {DOB} &nbsp;&nbsp;| &nbsp;&nbsp;{age}
+              {birthday} &nbsp;&nbsp;| &nbsp;&nbsp;{age}
             </Genres>
           </Details>
         </Container>

@@ -15,7 +15,7 @@ const Panel = styled.div`
   padding: 2.5% 5%;
   margin: 50px 10%;
   border: 4px solid transparent;
-  
+
   &.accent-left {
     border-left: 4px solid white;
   }
@@ -63,30 +63,33 @@ const Details = styled.div`
 
 const Summary = styled.div`
   margin: 20px 0;
-  text-transform:none;
-
+  text-transform: none;
 `;
 
 const Roles = ({ roles }) => {
   return (
     <Wrapper>
       <h1>POPULAR ROLES</h1>
-      {roles.map((role, index) => (
-        <Panel
-          className={`${index % 2 === 1 ? "accent-left" : "accent-right"}`}
-        >
-          <Container>
-            <MovieCard>
-              <Poster src={role.imgPosterMovie} />
-            </MovieCard>
-            <Details>
-              <Title>{role.title}</Title>
-              <Released>{role.character}</Released>
-            </Details>
-          </Container>
-          <Summary>{role.summary}</Summary>
-        </Panel>
-      ))}
+      {roles.map(
+        (role, index) =>
+          index < 5 && (
+            <Panel
+              key={`roles-map-${index}`}
+              className={`${index % 2 === 1 ? "accent-left" : "accent-right"}`}
+            >
+              <Container>
+                <MovieCard>
+                  <Poster url={role.poster_path} />
+                </MovieCard>
+                <Details>
+                  <Title>{role.name || role.title}</Title>
+                  <Released>{role.character}</Released>
+                </Details>
+              </Container>
+              <Summary>{role.overview}</Summary>
+            </Panel>
+          )
+      )}
     </Wrapper>
   );
 };

@@ -1,12 +1,33 @@
 import React from "react";
 import styled from "styled-components";
+import { Carousel } from "react-bootstrap";
+import { withMovieDetails } from "../../Hocs";
+
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   position: relative;
+
+  /* OVERWRITING CAROUSEL INDICATOR STYLING AND POSITIONING */
+  & .carousel-indicators {
+    position: absolute;
+    top: -2%;
+    left: 0;
+
+    li {
+      margin: 0.1vw;
+      width: 33.3vw;
+    }
+
+    .active {
+      color: skyblue;
+      background-color: skyblue;
+    }
+  }
 `;
 
-const DetailsOverlay = styled.div`
+const DetailsOverlay = styled(Carousel.Caption)`
+  /* OVERWRITING CAROUSEL CAPTION POSITONING & STYLING */
   position: absolute;
   left: 5%;
   bottom: 5%;
@@ -56,28 +77,44 @@ const SubDetails = styled.h3`
   font-size: 18px;
 `;
 
-const LandingCarousel = ({
-  url = "https://www.turnerpublishing.net/news/wp-content/uploads/2020/09/tenet-11-700x364.jpg",
-  category = "latest",
-  title = "Tenet",
-  genre = "Action",
-  rating = 6,
-}) => {
+const LandingCarousel = ({ movies=[] }) => {
   return (
     <Wrapper>
-      <Image>
-        <DarkOverlay />
-        <Img src={url} alt="Movie Poster" />
-      </Image>
-      <DetailsOverlay>
-        <Category>{category}</Category>
-        <Title>{title}</Title>
-        <SubDetails>
-          {genre} | {rating} Rating
-        </SubDetails>
-      </DetailsOverlay>
+      <Carousel interval={4000} controls={false} style={{ width: "100%", height: "100%" }}>
+        {movies && movies.map((movie, index) => (
+          <Carousel.Item>
+            <CarouselInner
+              key={`landing-carousel-item-${index}`}
+              id={movie.id}
+            />
+          </Carousel.Item>
+        ))}
+      </Carousel>
     </Wrapper>
   );
 };
+
+const CarouselInnerJSX = ({ movieDetails }) => {
+  const { backdrop_path, title, genres = [{ name: "" }], vote_average } =
+    movieDetails || {};
+  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
+  return (
+    <>
+      <Image>
+        <DarkOverlay />
+        <Img src={imageUrl} alt="Movie Poster" />
+      </Image>
+      <DetailsOverlay>
+        <Category>Trending</Category>
+        <Title>{title}</Title>
+        <SubDetails>
+          {genres[0]["name"]} | {vote_average} Rating
+        </SubDetails>
+      </DetailsOverlay>
+    </>
+  );
+};
+
+const CarouselInner = withMovieDetails(CarouselInnerJSX);
 
 export default LandingCarousel;

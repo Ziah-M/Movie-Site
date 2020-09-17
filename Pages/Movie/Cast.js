@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {CastSlider} from '../../Components'
+import {withCredits} from '../../Hocs'
 
 const Wrapper = styled.div`
   height: 100%;
@@ -13,13 +14,13 @@ font-size:40px;
 text-transform:uppercase;
 `
 
-const Cast = ({cast}) => {
+const Cast = ({credits}) => {
     return (
         <Wrapper>
             <Title>CAST</Title>
-            <CastSlider cast={cast}/>
+            <CastSlider cast={credits}/>
         </Wrapper>
     )
 }
 
-export default Cast
+export default withCredits(Cast)

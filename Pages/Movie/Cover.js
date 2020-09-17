@@ -7,6 +7,7 @@ import {
   MovieCardSmall,
   RatingStars,
 } from "../../Components";
+import { numberWithCommas } from "../../Helper";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -93,9 +94,20 @@ const Genres = styled.div`
 `;
 
 const Cover = ({ movie }) => {
-  const { imgPosterLarge, title, rating, genres } = movie;
+  const {
+    backdrop_path,
+    poster_path,
+    title,
+    vote_average,
+    genres = [],
+    release_date,
+    revenue = 0,
+  } = movie || {};
+  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
+
+  const revenueWithCommas = numberWithCommas(revenue);
   return (
-    <Wrapper url={imgPosterLarge}>
+    <Wrapper url={imageUrl}>
       <Overlay />
       <Position className="tl">
         <BackButton />
@@ -109,18 +121,25 @@ const Cover = ({ movie }) => {
       <Position className="bl">
         <Container>
           <MovieCard>
-            <MovieCardSmall className="rounded" />
+            <MovieCardSmall url={poster_path} className="rounded" />
           </MovieCard>
           <Details>
             <Title>{title}</Title>
             <Ratings>
-              <span>{rating}</span>&nbsp;
-              <RatingStars rating={rating} />
+              <span>{vote_average}</span>&nbsp;
+              <RatingStars rating={vote_average} />
             </Ratings>
             <Released>
-              Released | EN <br />
+              {release_date && release_date.substr(0, 4)} &nbsp;|&nbsp; $
+              {revenueWithCommas} <br />
             </Released>
-            <Genres>{genres[0]}</Genres>
+            <Genres>
+              {genres.map((genre, index) => (
+                <React.Fragment key={`movie-cover-genre${index}`}>
+                  {genre["name"]},&nbsp;
+                </React.Fragment>
+              ))}
+            </Genres>
           </Details>
         </Container>
       </Position>

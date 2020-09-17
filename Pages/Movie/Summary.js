@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 const Text = styled.div`
   font-size: 18px;
   margin-top: 15px;
+  text-transform:none;
 `;
 
 const Summary = ({ summary }) => {

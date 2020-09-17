@@ -21,13 +21,14 @@ const Img=styled.img`
 `
 
 const MovieCardSmall = ({
-  url = getDefault().movie.imgPosterSmall,
+  url = '',
   children,
   className,
 }) => {
+  const imageUrl=`https://image.tmdb.org/t/p/original${url}`
   return (
     <Wrapper className={className}>
-      <Img src={url} />
+      <Img src={imageUrl} />
       {children}
     </Wrapper>
   );
