@@ -58,10 +58,15 @@ const Link = styled.div`
   font-size: 18px;
 `;
 
+const Title=styled.div`
+  font-size:40px;
+text-transform:uppercase;
+`
+
 const Reviews = ({ movieReviews:reviews=[]}) => {
   return (
     <Wrapper>
-      <h1>POPULAR REVIEWS</h1>
+      <Title>POPULAR REVIEWS</Title>
       {reviews && reviews.map((review, index) => (
         <Panel
           className={`${index % 2 === 1 ? "accent-left" : "accent-right"}`}

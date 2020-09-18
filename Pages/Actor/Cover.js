@@ -100,7 +100,7 @@ const Cover = ({ actor, backdrop_path }) => {
   const genderString = gender === 2 ? "Male" : "Female";
 
   const year = new Date().getFullYear();
-  const age = year - parseInt(birthday.substr(0, 4));
+  const age = year - parseInt(birthday && birthday.substr(0, 4)) || 'Age not found';
 
   const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
 

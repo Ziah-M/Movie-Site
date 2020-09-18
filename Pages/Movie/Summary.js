@@ -5,6 +5,8 @@ const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   color: white;
+  font-size:40px;
+text-transform:uppercase;
 `;
 
 const Text = styled.div`

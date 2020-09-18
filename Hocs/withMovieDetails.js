@@ -6,7 +6,7 @@ const MOVIE_URL = "https://api.themoviedb.org/3/movie";
 
 const withMovieDetails = (Component) => {
   const WithMovieDetails = (props) => {
-    const { id } = props;
+    const id = props.match && props.match.params && props.match.params.id || props.id;
 
     const [movieDetails, setMovieDetails] = useState(null);
 

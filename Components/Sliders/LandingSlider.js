@@ -85,6 +85,8 @@ const LandingSlider = ({ movies }) => {
               <MovieCardSmall
                 className="rounded"
                 url={movie.poster_path}
+                id={movie.id}
+                isMovie
               ></MovieCardSmall>
             </MovieCard>
             <Title>{movie.title}</Title>

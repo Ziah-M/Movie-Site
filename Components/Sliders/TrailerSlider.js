@@ -37,6 +37,13 @@ const IFrame = styled.iframe`
   max-height: 1000px;
 `;
 
+const Title=styled.div`
+font-size:28px;
+text-transform:uppercase;
+text-align:center;
+width:100%;
+`
+
 const TrailerSlider = ({ trailers = [] }) => {
   return (
     <Wrapper>
@@ -44,9 +51,9 @@ const TrailerSlider = ({ trailers = [] }) => {
         {trailers &&
           trailers.map((trailer, index) => (
             <MovieCard key={`trailer-item-${index}`}>
-              <h5 style={{ textAlign: "center", width: "100%" }}>
+              <Title>
                 {trailer.name}
-              </h5>
+              </Title>
               <IFrame
                 src={`https://www.youtube.com/embed/${trailer.key}`}
                 style={{ border: "none" }}

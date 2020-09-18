@@ -66,10 +66,15 @@ const Summary = styled.div`
   text-transform: none;
 `;
 
+const HeadingTitle=styled.div`
+  font-size:40px;
+text-transform:uppercase;
+`
+
 const Roles = ({ roles }) => {
   return (
     <Wrapper>
-      <h1>POPULAR ROLES</h1>
+      <HeadingTitle>POPULAR ROLES</HeadingTitle>
       {roles.map(
         (role, index) =>
           index < 5 && (
@@ -79,7 +84,7 @@ const Roles = ({ roles }) => {
             >
               <Container>
                 <MovieCard>
-                  <Poster url={role.poster_path} />
+                  <Poster url={role.poster_path} isMovie id={role.id}/>
                 </MovieCard>
                 <Details>
                   <Title>{role.name || role.title}</Title>

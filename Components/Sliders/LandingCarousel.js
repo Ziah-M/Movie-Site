@@ -77,18 +77,20 @@ const SubDetails = styled.h3`
   font-size: 18px;
 `;
 
-const LandingCarousel = ({ movies=[] }) => {
+const LandingCarousel = ({ movies = [] }) => {
   return (
     <Wrapper>
-      <Carousel interval={4000} controls={false} style={{ width: "100%", height: "100%" }}>
-        {movies && movies.map((movie, index) => (
-          <Carousel.Item>
-            <CarouselInner
-              key={`landing-carousel-item-${index}`}
-              id={movie.id}
-            />
-          </Carousel.Item>
-        ))}
+      <Carousel
+        interval={4000}
+        controls={false}
+        style={{ width: "100%", height: "100%" }}
+      >
+        {movies &&
+          movies.map((movie, index) => (
+            <Carousel.Item key={`landing-carousel-item-${index}`}>
+              <CarouselInner id={movie.id} />
+            </Carousel.Item>
+          ))}
       </Carousel>
     </Wrapper>
   );

@@ -36,6 +36,7 @@ const Category = styled.div`
 `;
 
 const CategoryTitle = styled.h2`
+  font-size: 40px;
   text-transform: uppercase;
 `;
 

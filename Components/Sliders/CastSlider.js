@@ -74,17 +74,20 @@ const CastSlider = ({ cast = [] }) => {
   return (
     <Wrapper>
       <Slider {...settings}>
-        {cast && cast.map((actor, index) => (
-          <MovieSection key={`cast-slider-${index}`}>
-            <MovieCard>
-              <MovieCardSmall
-                className="rounded"
-                url={actor.profile_path}
-              ></MovieCardSmall>
-            </MovieCard>
-            <Title>{actor.name}</Title>
-          </MovieSection>
-        ))}
+        {cast &&
+          cast.map((actor, index) => (
+            <MovieSection key={`cast-slider-${index}`}>
+              <MovieCard>
+                <MovieCardSmall
+                  className="rounded"
+                  url={actor.profile_path}
+                  id={actor.id}
+                  isPerson
+                ></MovieCardSmall>
+              </MovieCard>
+              <Title>{actor.name}</Title>
+            </MovieSection>
+          ))}
       </Slider>
     </Wrapper>
   );

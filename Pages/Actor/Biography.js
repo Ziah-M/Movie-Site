@@ -8,10 +8,16 @@ const Wrapper = styled.div`
   text-transform: none;
   font-size: 18px;
 `;
+
+const Title=styled.div`
+  font-size:40px;
+text-transform:uppercase;
+`
+
 const Biography = ({ biography }) => {
   return (
     <Wrapper>
-      <h1>BIOGRAPHY</h1>
+      <Title>BIOGRAPHY</Title>
       <p>{biography.substr(0, 750)}...</p>
     </Wrapper>
   );
