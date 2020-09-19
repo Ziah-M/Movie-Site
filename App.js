@@ -29,6 +29,7 @@ const App = ({
         <Switch>
           <Route path={R.MOVIE} component={P.Movie} />
           <Route path={R.ACTOR} component={P.Actor} />
+          <Route path={R.SEARCH} component={P.Search}/>
           <Route
             exact
             path={R.LANDING}
