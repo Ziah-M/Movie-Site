@@ -1,1 +1,1 @@
-Files from this site are integrated into my portfolio site; therefore there isn't an index.html or package.json for this project independetly.
+Powered by the TMDB API, this web-app allows the user to search for information on any movie or actor. Features include viewing reviews, trailers, cast information, plot summaries, actor's roles, rating movies and logging in to add movies to a watch playlist.
