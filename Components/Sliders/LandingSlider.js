@@ -24,9 +24,9 @@ const settings = {
 
   responsive: [
     {
-      breakpoint: 800,
+      breakpoint: 600,
       settings: {
-        slidesToShow: 5,
+        slidesToShow: 3,
       },
     },
   ],
@@ -43,6 +43,9 @@ const MovieCard = styled.div`
   /* aspect ratio of card */
   width: 13vw;
   height: calc(1.5 * 13 vw);
+
+  max-width: 300px;
+  max-height: 300px * 1.5;
 `;
 
 const Overlay = styled.div`
@@ -76,7 +79,7 @@ const LandingSlider = ({ movies }) => {
   return (
     <Wrapper>
       <Slider {...settings}>
-        {movies.map((movie,index) => (
+        {movies.map((movie, index) => (
           <MovieSection key={`landing-slider-${index}`}>
             <MovieCard>
               <Overlay>

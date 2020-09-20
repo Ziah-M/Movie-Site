@@ -1,4 +1,5 @@
 export const LANDING = '/movieserver'
+export const LANDING_TV = '/movieserver/tv'
 export const MOVIE='/movieserver/movie/:id'
 export const ACTOR = '/movieserver/actor/:id'
 export const SEARCH='/movieserver/search/:searchTerm'

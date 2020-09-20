@@ -6,7 +6,7 @@ import { LandingNavbar as Navbar } from "../../Components";
 import Footer from "./Footer";
 import styled from "styled-components";
 import { getCategories } from "../../Data";
-import { withFetchMovies } from "../../Hocs";
+import { withFetchTv } from "../../Hocs";
 import { useHistory } from "react-router";
 
 const Section = styled.div`
@@ -18,9 +18,6 @@ const Section = styled.div`
 
   &#navbar {
     height: 50px;
-  }
-
-  &#categories {
   }
 
   &#select-category {
@@ -54,11 +51,10 @@ const Divider = styled.div`
 
 const Landing = ({
   categories = getCategories(),
-  moviesComingSoon,
-  moviesTopRated,
-  moviesPopular,
-  moviesTrending,
-  moviesPlayingNow,
+  tvAiringToday,
+  tvOnTheAir,
+  tvPopular,
+  tvTopRated,
 }) => {
   const history = useHistory();
   return (
@@ -67,7 +63,7 @@ const Landing = ({
         <Navbar />
       </Section>
       <Section id="carousel">
-        <LandingCarousel movies={moviesTrending} />
+        <LandingCarousel movies={tvPopular} />
       </Section>
       <Section id="select-category">
         <LandingButton onClick={() => history.push("/movieserver")}>
@@ -80,40 +76,40 @@ const Landing = ({
       <Section id="categories">
         {/* MAP with heading for category and data */}
 
-        {moviesComingSoon && (
-          <Category id="upcoming">
-            <CategoryTitle>{categories[0]}</CategoryTitle>
+        {tvAiringToday && (
+          <Category id="today">
+            <CategoryTitle>TV Airing Today</CategoryTitle>
             <br />
-            <LandingSlider movies={moviesComingSoon} />
+            <LandingSlider movies={tvAiringToday} />
             <br />
             <Divider />
           </Category>
         )}
-        {moviesPopular && (
+        {tvPopular && (
           <Category id="popular">
             <CategoryTitle>{categories[1]}</CategoryTitle>
             <br />
-            <LandingSlider movies={moviesPopular} />
+            <LandingSlider movies={tvPopular} />
             <br />
             <Divider />
           </Category>
         )}
 
-        {moviesPlayingNow && (
-          <Category id="now-playing">
-            <CategoryTitle>{categories[2]}</CategoryTitle>
+        {tvOnTheAir && (
+          <Category id="on-the-air">
+            <CategoryTitle>TV aired this week</CategoryTitle>
             <br />
-            <LandingSlider movies={moviesPlayingNow} />
+            <LandingSlider movies={tvOnTheAir} />
             <br />
             <Divider />
           </Category>
         )}
 
-        {moviesTopRated && (
+        {tvTopRated && (
           <Category id="top-rated">
             <CategoryTitle>{categories[3]}</CategoryTitle>
             <br />
-            <LandingSlider movies={moviesTopRated} />
+            <LandingSlider movies={tvTopRated} />
             <br />
             <Divider />
           </Category>
@@ -124,4 +120,4 @@ const Landing = ({
   );
 };
 
-export default Landing;
+export default withFetchTv(Landing);

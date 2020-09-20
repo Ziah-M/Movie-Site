@@ -108,7 +108,7 @@ const LandingNavbar = () => {
     <Wrapper>
       <Navbar>
         <Ul>
-          <Link to="/">Portfolio Home</Link>
+          <Link to="/">Portfolio</Link>
           <Searchbar onSubmit={() => handleSubmit()}>
             <Search
               value={searchTerm}

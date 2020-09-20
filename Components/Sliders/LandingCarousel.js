@@ -3,6 +3,48 @@ import styled from "styled-components";
 import { Carousel } from "react-bootstrap";
 import { withMovieDetails } from "../../Hocs";
 
+const LandingCarousel = ({ movies = [] }) => {
+  return (
+    <Wrapper>
+      <Carousel
+        interval={4000}
+        controls={false}
+        style={{ width: "100%", height: "100%" }}
+      >
+        {movies &&
+          movies.map((movie, index) => (
+            <Carousel.Item key={`landing-carousel-item-${index}`}>
+              <CarouselInner id={movie.id} />
+            </Carousel.Item>
+          ))}
+      </Carousel>
+    </Wrapper>
+  );
+};
+
+const CarouselInnerJSX = ({ movieDetails }) => {
+  const { backdrop_path, title, genres = [{ name: "" }], vote_average } =
+    movieDetails || {};
+  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
+  return (
+    <>
+      <Image>
+        <DarkOverlay />
+        <Img src={imageUrl} alt="Movie Poster" />
+      </Image>
+      <DetailsOverlay>
+        <Category>Trending</Category>
+        <Title>{title}</Title>
+        <SubDetails>
+          {genres[0]["name"]} | {vote_average} Rating
+        </SubDetails>
+      </DetailsOverlay>
+    </>
+  );
+};
+
+const CarouselInner = withMovieDetails(CarouselInnerJSX);
+
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
@@ -10,12 +52,8 @@ const Wrapper = styled.div`
 
   /* OVERWRITING CAROUSEL INDICATOR STYLING AND POSITIONING */
   & .carousel-indicators {
-    position: absolute;
-    top: -2%;
-    left: 0;
-
     li {
-      margin: 0.1vw;
+      margin: 0 0.1vw;
       width: 33.3vw;
     }
 
@@ -64,59 +102,29 @@ const Img = styled.img`
 const Category = styled.h2`
   text-transform: uppercase;
   font-size: 18px;
+
+  @media (max-width:600px){
+    font-size:12px;
+  }
 `;
 
 const Title = styled.h1`
   text-transform: capitalize;
   font-size: 32px;
   font-weight: 500;
+
+  @media (max-width:600px){
+    font-size:24px;
+  }
 `;
 
 const SubDetails = styled.h3`
   text-transform: capitalize;
   font-size: 18px;
+
+  @media (max-width:600px){
+    font-size:12px;
+  }
 `;
-
-const LandingCarousel = ({ movies = [] }) => {
-  return (
-    <Wrapper>
-      <Carousel
-        interval={4000}
-        controls={false}
-        style={{ width: "100%", height: "100%" }}
-      >
-        {movies &&
-          movies.map((movie, index) => (
-            <Carousel.Item key={`landing-carousel-item-${index}`}>
-              <CarouselInner id={movie.id} />
-            </Carousel.Item>
-          ))}
-      </Carousel>
-    </Wrapper>
-  );
-};
-
-const CarouselInnerJSX = ({ movieDetails }) => {
-  const { backdrop_path, title, genres = [{ name: "" }], vote_average } =
-    movieDetails || {};
-  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
-  return (
-    <>
-      <Image>
-        <DarkOverlay />
-        <Img src={imageUrl} alt="Movie Poster" />
-      </Image>
-      <DetailsOverlay>
-        <Category>Trending</Category>
-        <Title>{title}</Title>
-        <SubDetails>
-          {genres[0]["name"]} | {vote_average} Rating
-        </SubDetails>
-      </DetailsOverlay>
-    </>
-  );
-};
-
-const CarouselInner = withMovieDetails(CarouselInnerJSX);
 
 export default LandingCarousel;

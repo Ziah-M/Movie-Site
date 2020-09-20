@@ -6,6 +6,8 @@ import { withTrailers } from "./withTrailers";
 import { withActorDetails } from "./withActorDetails";
 import { withActorRoles } from "./withActorRoles";
 import { withSearch } from "./withSearch";
+import withScrollToTopOnRouteChange from "./withScrollToTopOnRouteChange";
+import { withFetchTv } from "./withFetchTv";
 
 export {
   withFetchMovies,
@@ -16,4 +18,6 @@ export {
   withActorDetails,
   withActorRoles,
   withSearch,
+  withScrollToTopOnRouteChange,
+  withFetchTv,
 };

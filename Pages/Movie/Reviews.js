@@ -48,9 +48,11 @@ const Name = styled.div`
 
 const Review = styled.div`
   font-size: 18px;
+  max-width:100%;
   color: white;
   margin: 30px 0;
   text-transform: none;
+  overflow-x:hidden;
 `;
 
 const Link = styled.div`
@@ -69,6 +71,7 @@ const Reviews = ({ movieReviews:reviews=[]}) => {
       <Title>POPULAR REVIEWS</Title>
       {reviews && reviews.map((review, index) => (
         <Panel
+        key={`review-panel-${index}`}
           className={`${index % 2 === 1 ? "accent-left" : "accent-right"}`}
         >
           <Container>

@@ -3,7 +3,7 @@ import { Carousel } from "react-bootstrap";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: auto;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -11,10 +11,12 @@ const Wrapper = styled.div`
 
   & ${Carousel} {
     width: 50vw;
-    height: 50vw;
+    height: auto;
+    margin: 20px 0;
 
-    max-width: 1000px;
-  max-height: 1000px;
+    max-width: 600px;
+    max-height: 600px;
+    position:relative;
 
     .carousel-indicators .active {
       background-color: skyblue;
@@ -24,25 +26,30 @@ const Wrapper = styled.div`
 
 const MovieCard = styled(Carousel.Item)`
   width: 50vw;
-  height: 50vw;
+  height: auto;
 
-  max-width: 1000px;
-  max-height: 1000px;
+  max-width: 600px;
+  max-height: 600px;
 `;
 
 const IFrame = styled.iframe`
   width: 50vw;
   height: 50vw;
-  max-width: 1000px;
-  max-height: 1000px;
+  max-width: 600px;
+  max-height: 600px;
 `;
 
-const Title=styled.div`
-font-size:28px;
-text-transform:uppercase;
-text-align:center;
-width:100%;
-`
+const Title = styled.div`
+  font-size: 28px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+
+  @media (max-width: 600px) {
+    font-size: 18px;
+  }
+`;
 
 const TrailerSlider = ({ trailers = [] }) => {
   return (
@@ -51,9 +58,7 @@ const TrailerSlider = ({ trailers = [] }) => {
         {trailers &&
           trailers.map((trailer, index) => (
             <MovieCard key={`trailer-item-${index}`}>
-              <Title>
-                {trailer.name}
-              </Title>
+              <Title>{trailer.name}</Title>
               <IFrame
                 src={`https://www.youtube.com/embed/${trailer.key}`}
                 style={{ border: "none" }}
@@ -73,7 +78,7 @@ function NextArrow(props) {
       style={{
         ...style,
         display: "block",
-        transform: "translate(-5vw, -4vw) scale(1.5)",
+        transform: "scale(1.5)",
         zIndex: "1000",
         color: "transparent",
         background: "transparent",

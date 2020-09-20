@@ -1,7 +1,7 @@
 import React from "react";
 import * as P from "./Pages";
 import styled from "styled-components";
-import { withFetchMovies } from "./Hocs";
+import { withFetchMovies, withScrollToTopOnRouteChange } from "./Hocs";
 import { Switch, Route } from "react-router";
 import * as R from "./ROUTES";
 
@@ -29,7 +29,8 @@ const App = ({
         <Switch>
           <Route path={R.MOVIE} component={P.Movie} />
           <Route path={R.ACTOR} component={P.Actor} />
-          <Route path={R.SEARCH} component={P.Search}/>
+          <Route path={R.SEARCH} component={P.Search} />
+          <Route path={R.LANDING_TV} component={P.LandingTv}/>
           <Route
             exact
             path={R.LANDING}
@@ -51,5 +52,4 @@ const App = ({
   );
 };
 
-// WRAP WITH withFetchMovies HOC
-export default withFetchMovies(App);
+export default withScrollToTopOnRouteChange(withFetchMovies(App));

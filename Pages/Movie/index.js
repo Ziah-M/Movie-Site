@@ -11,7 +11,7 @@ const Section = styled.div`
   width: 100vw;
   margin: 100px 0 0 0;
   padding: 0 15vw;
-
+height:auto;
 `;
 
 const Wrapper = styled.div`

@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   width: 35vw;
   height: 5vw;
+  min-height: 50px;
   background: linear-gradient(
       90deg,
       rgba(255, 86, 132, 0.4) 0%,
@@ -29,6 +30,12 @@ const Button = styled.button`
   width: 100%;
   border-radius: 5px;
   color: white;
+  outline: none !important;
+
+  &:hover {
+    background: #deb150;
+    color: black;
+  }
 `;
 
 const BorderWrap = styled.div`

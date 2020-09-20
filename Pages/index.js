@@ -5,5 +5,6 @@ import Profile from "./Profile";
 import Login from "./Login";
 import Discover from "./Discover";
 import Actor from "./Actor";
+import LandingTv from './LandingTv'
 
-export { Landing, Movie, Search, Profile, Login, Discover, Actor };
+export { Landing, Movie, Search, Profile, Login, Discover, Actor, LandingTv };
