@@ -18,10 +18,10 @@ const Wrapper = styled.div`
   padding-bottom: 100px;
 `;
 
-const Movie = ({ movieDetails = {} }) => {
+const Movie = ({ movieDetails = {}, match:{path} }) => {
   const { overview = null, trailers = null, cast = null, reviews = null } =
     movieDetails || {};
-
+    
   return (
     <Wrapper>
       <Cover movie={movieDetails} />

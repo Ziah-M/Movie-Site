@@ -36,7 +36,7 @@ const CarouselInnerJSX = ({ movieDetails }) => {
         <Category>Trending</Category>
         <Title>{title}</Title>
         <SubDetails>
-          {genres[0]["name"]} | {vote_average} Rating
+          {genres[0] && genres[0]["name"]} | {vote_average} Rating
         </SubDetails>
       </DetailsOverlay>
     </>

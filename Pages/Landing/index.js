@@ -7,7 +7,7 @@ import Footer from "./Footer";
 import styled from "styled-components";
 import { getCategories } from "../../Data";
 import { withFetchMovies } from "../../Hocs";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 const Section = styled.div`
   width: 100vw;

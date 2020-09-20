@@ -26,7 +26,7 @@ const Img = styled.img`
   height: 100%;
 `;
 
-const MovieCardSmall = ({ url = "", children, className, isMovie, isPerson, id }) => {
+const MovieCardSmall = ({ url = "", children, className, isTv, isMovie, isPerson, id }) => {
   const imageUrl = url
     ? `https://image.tmdb.org/t/p/original${url}`
     // PROFILE PICTURE NOT FOUND IMAGE
@@ -37,6 +37,10 @@ const MovieCardSmall = ({ url = "", children, className, isMovie, isPerson, id }
     const handleClick=() => {
       if(isMovie){
         history.push(`/movieserver/movie/${id}`)
+      }
+
+      if(isTv){
+        history.push(`/movieserver/tv/details/${id}`)
       }
 
       if(isPerson){

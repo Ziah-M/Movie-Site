@@ -1,32 +1,47 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import API_KEY from "../private";
+import { useLocation } from "react-router-dom";
+
 const MOVIE_URL = "https://api.themoviedb.org/3/movie";
+const TV_URL = "https://api.themoviedb.org/3/tv";
 
 const withMovieReviews = (Component) => {
   const WithMovieReviews = (props) => {
-    const id = props.match && props.match.params && props.match.params.id || props.id;
-
+    const id =
+      (props.match && props.match.params && props.match.params.id) || props.id;
 
     const [movieReviews, setMovieReviews] = useState(null);
 
+    const location = useLocation();
+
     useEffect(() => {
       if (id) {
-        getMovieReviews();
+        //set isTv from either props OR the route
+        var isTv = props;
+        var urlMatchesTv = location && location.pathname.includes("tv");
+        if (urlMatchesTv) {
+          isTv = true;
+        }
+        const conditionalUrl = isTv === true ? TV_URL : MOVIE_URL;
+        const conditionalLocalStorage = isTv ? "tv" : "movie";
+        getMovieReviews(conditionalUrl, conditionalLocalStorage);
       }
     }, []);
 
-    const getMovieReviews = () => {
-      const cache = localStorage.getItem(`movie-reviews-${id}`);
+    const getMovieReviews = (conditionalUrl, conditionalLocalStorage) => {
+      const cache = localStorage.getItem(
+        `${conditionalLocalStorage}-reviews-${id}`
+      );
       if (cache) {
         setMovieReviews(JSON.parse(cache));
       } else {
-          console.log("FETCHING REVIEWS")
+        console.log("FETCHING REVIEWS");
         axios
-          .request(`${MOVIE_URL}/${id}/reviews?api_key=${API_KEY}`)
+          .request(`${conditionalUrl}/${id}/reviews?api_key=${API_KEY}`)
           .then((result) => {
             localStorage.setItem(
-              `movie-reviews-${id}`,
+              `${conditionalLocalStorage}-reviews-${id}`,
               JSON.stringify(result.data.results)
             );
             setMovieReviews(result.data.results);

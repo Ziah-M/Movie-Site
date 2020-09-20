@@ -75,7 +75,7 @@ const GenresWrapper = styled.div`
   max-width: 10vw;
 `;
 
-const LandingSlider = ({ movies }) => {
+const LandingSlider = ({ movies, isTv = false }) => {
   return (
     <Wrapper>
       <Slider {...settings}>
@@ -89,11 +89,12 @@ const LandingSlider = ({ movies }) => {
                 className="rounded"
                 url={movie.poster_path}
                 id={movie.id}
-                isMovie
+                isMovie={!isTv}
+                isTv={isTv}
               ></MovieCardSmall>
             </MovieCard>
             <Title>{movie.title}</Title>
-            <FetchedGenres id={movie.id}></FetchedGenres>
+            <FetchedGenres id={movie.id} isTv={isTv}></FetchedGenres>
           </MovieSection>
         ))}
       </Slider>
@@ -138,7 +139,12 @@ function PrevArrow(props) {
 
 const Genres = ({ movieDetails = null }) => {
   return (
-    <GenresWrapper>{movieDetails && movieDetails.genres[0].name}</GenresWrapper>
+    <GenresWrapper>
+      {movieDetails &&
+        movieDetails.genres &&
+        movieDetails.genres[0] &&
+        movieDetails.genres[0].name}
+    </GenresWrapper>
   );
 };
 

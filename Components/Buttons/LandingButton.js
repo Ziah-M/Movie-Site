@@ -46,9 +46,9 @@ const BorderWrap = styled.div`
   background: #eb4e7a;
 `;
 
-const LandingButton = ({ children }) => {
+const LandingButton = ({ children, onClick }) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={onClick}>
       <BorderWrap>
         <Button>{children}</Button>
       </BorderWrap>

@@ -30,6 +30,7 @@ const App = ({
           <Route path={R.MOVIE} component={P.Movie} />
           <Route path={R.ACTOR} component={P.Actor} />
           <Route path={R.SEARCH} component={P.Search} />
+          <Route path={R.TV_DETAILS} component={P.Movie} />
           <Route path={R.LANDING_TV} component={P.LandingTv}/>
           <Route
             exact

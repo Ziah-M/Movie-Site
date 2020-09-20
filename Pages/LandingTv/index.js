@@ -3,7 +3,7 @@ import { LandingCarousel } from "../../Components";
 import { LandingButton } from "../../Components";
 import { LandingSlider } from "../../Components";
 import { LandingNavbar as Navbar } from "../../Components";
-import Footer from "./Footer";
+import Footer from "../Landing/Footer";
 import styled from "styled-components";
 import { getCategories } from "../../Data";
 import { withFetchTv } from "../../Hocs";
@@ -80,7 +80,7 @@ const Landing = ({
           <Category id="today">
             <CategoryTitle>TV Airing Today</CategoryTitle>
             <br />
-            <LandingSlider movies={tvAiringToday} />
+            <LandingSlider movies={tvAiringToday} isTv />
             <br />
             <Divider />
           </Category>
@@ -89,7 +89,7 @@ const Landing = ({
           <Category id="popular">
             <CategoryTitle>{categories[1]}</CategoryTitle>
             <br />
-            <LandingSlider movies={tvPopular} />
+            <LandingSlider movies={tvPopular} isTv />
             <br />
             <Divider />
           </Category>
@@ -99,7 +99,7 @@ const Landing = ({
           <Category id="on-the-air">
             <CategoryTitle>TV aired this week</CategoryTitle>
             <br />
-            <LandingSlider movies={tvOnTheAir} />
+            <LandingSlider movies={tvOnTheAir} isTv />
             <br />
             <Divider />
           </Category>
@@ -109,7 +109,7 @@ const Landing = ({
           <Category id="top-rated">
             <CategoryTitle>{categories[3]}</CategoryTitle>
             <br />
-            <LandingSlider movies={tvTopRated} />
+            <LandingSlider movies={tvTopRated} isTv />
             <br />
             <Divider />
           </Category>
