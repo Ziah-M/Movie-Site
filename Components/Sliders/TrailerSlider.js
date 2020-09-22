@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
     max-width: 600px;
     max-height: 600px;
-    position:relative;
+    position: relative;
 
     .carousel-indicators .active {
       background-color: skyblue;

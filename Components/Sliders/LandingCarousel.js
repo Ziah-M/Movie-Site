@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import { Carousel } from "react-bootstrap";
+import styled from "styled-components";
 import { withMovieDetails } from "../../Hocs";
 
 const LandingCarousel = ({ movies = [] }) => {
@@ -12,18 +12,22 @@ const LandingCarousel = ({ movies = [] }) => {
         style={{ width: "100%", height: "100%" }}
       >
         {movies &&
-          movies.map((movie, index) => (
-            <Carousel.Item key={`landing-carousel-item-${index}`}>
-              <CarouselInner id={movie.id} />
-            </Carousel.Item>
-          ))}
+          movies.map(
+            (movie, index) =>
+              index < 3 &&
+              movie.backdrop_path && (
+                <Carousel.Item key={`landing-carousel-item-${index}`}>
+                  <CarouselInner id={movie.id} />
+                </Carousel.Item>
+              )
+          )}
       </Carousel>
     </Wrapper>
   );
 };
 
 const CarouselInnerJSX = ({ movieDetails }) => {
-  const { backdrop_path, title, genres = [{ name: "" }], vote_average } =
+  const { backdrop_path, title, name, genres = [{ name: "" }], vote_average } =
     movieDetails || {};
   const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
   return (
@@ -34,7 +38,7 @@ const CarouselInnerJSX = ({ movieDetails }) => {
       </Image>
       <DetailsOverlay>
         <Category>Trending</Category>
-        <Title>{title}</Title>
+        <Title>{title || name}</Title>
         <SubDetails>
           {genres[0] && genres[0]["name"]} | {vote_average} Rating
         </SubDetails>
@@ -103,8 +107,8 @@ const Category = styled.h2`
   text-transform: uppercase;
   font-size: 18px;
 
-  @media (max-width:600px){
-    font-size:12px;
+  @media (max-width: 600px) {
+    font-size: 12px;
   }
 `;
 
@@ -113,8 +117,8 @@ const Title = styled.h1`
   font-size: 32px;
   font-weight: 500;
 
-  @media (max-width:600px){
-    font-size:24px;
+  @media (max-width: 600px) {
+    font-size: 24px;
   }
 `;
 
@@ -122,8 +126,8 @@ const SubDetails = styled.h3`
   text-transform: capitalize;
   font-size: 18px;
 
-  @media (max-width:600px){
-    font-size:12px;
+  @media (max-width: 600px) {
+    font-size: 12px;
   }
 `;
 

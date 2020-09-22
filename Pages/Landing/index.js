@@ -1,13 +1,14 @@
 import React from "react";
-import { LandingCarousel } from "../../Components";
-import { LandingButton } from "../../Components";
-import { LandingSlider } from "../../Components";
-import { LandingNavbar as Navbar } from "../../Components";
-import Footer from "./Footer";
-import styled from "styled-components";
-import { getCategories } from "../../Data";
-import { withFetchMovies } from "../../Hocs";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+import {
+  LandingButton,
+  LandingCarousel,
+  LandingNavbar as Navbar,
+  LandingSlider,
+} from "../../Components";
+import { getCategories } from "../../Data";
+import Footer from "./Footer";
 
 const Section = styled.div`
   width: 100vw;
@@ -78,17 +79,6 @@ const Landing = ({
         </LandingButton>
       </Section>
       <Section id="categories">
-        {/* MAP with heading for category and data */}
-
-        {moviesComingSoon && (
-          <Category id="upcoming">
-            <CategoryTitle>{categories[0]}</CategoryTitle>
-            <br />
-            <LandingSlider movies={moviesComingSoon} />
-            <br />
-            <Divider />
-          </Category>
-        )}
         {moviesPopular && (
           <Category id="popular">
             <CategoryTitle>{categories[1]}</CategoryTitle>
@@ -104,6 +94,16 @@ const Landing = ({
             <CategoryTitle>{categories[2]}</CategoryTitle>
             <br />
             <LandingSlider movies={moviesPlayingNow} />
+            <br />
+            <Divider />
+          </Category>
+        )}
+
+        {moviesComingSoon && (
+          <Category id="upcoming">
+            <CategoryTitle>{categories[0]}</CategoryTitle>
+            <br />
+            <LandingSlider movies={moviesComingSoon} />
             <br />
             <Divider />
           </Category>

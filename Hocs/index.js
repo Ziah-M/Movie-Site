@@ -1,13 +1,13 @@
-import { withFetchMovies } from "./withFetchMovies";
-import { withMovieDetails } from "./withMovieDetails";
-import { withMovieReviews as withReviews } from "./withReviews";
-import { withCredits } from "./withCredits";
-import { withTrailers } from "./withTrailers";
 import { withActorDetails } from "./withActorDetails";
 import { withActorRoles } from "./withActorRoles";
-import { withSearch } from "./withSearch";
-import withScrollToTopOnRouteChange from "./withScrollToTopOnRouteChange";
+import { withCredits } from "./withCredits";
+import { withFetchMovies } from "./withFetchMovies";
 import { withFetchTv } from "./withFetchTv";
+import { withMovieDetails } from "./withMovieDetails";
+import { withMovieReviews as withReviews } from "./withReviews";
+import withScrollToTopOnRouteChange from "./withScrollToTopOnRouteChange";
+import { withSearch } from "./withSearch";
+import { withTrailers } from "./withTrailers";
 
 export {
   withFetchMovies,
@@ -21,3 +21,4 @@ export {
   withScrollToTopOnRouteChange,
   withFetchTv,
 };
+

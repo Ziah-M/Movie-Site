@@ -5,14 +5,14 @@ const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   color: white;
-  font-size:40px;
-text-transform:uppercase;
+  font-size: 40px;
+  text-transform: uppercase;
 `;
 
 const Text = styled.div`
   font-size: 18px;
   margin-top: 15px;
-  text-transform:none;
+  text-transform: none;
 `;
 
 const Summary = ({ summary }) => {

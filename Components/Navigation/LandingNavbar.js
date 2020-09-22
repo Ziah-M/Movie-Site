@@ -1,14 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faSearch,
-  faHome,
-  faUser,
-  faBolt,
+  faBolt, faHome, faSearch,
+
+  faUser
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   height: 100%;

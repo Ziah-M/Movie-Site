@@ -11,17 +11,17 @@ const Section = styled.div`
   width: 100vw;
   margin: 100px 0 0 0;
   padding: 0 15vw;
-height:auto;
+  height: auto;
 `;
 
 const Wrapper = styled.div`
   padding-bottom: 100px;
 `;
 
-const Movie = ({ movieDetails = {}, match:{path} }) => {
+const Movie = ({ movieDetails = {}, match: { path } }) => {
   const { overview = null, trailers = null, cast = null, reviews = null } =
     movieDetails || {};
-    
+
   return (
     <Wrapper>
       <Cover movie={movieDetails} />

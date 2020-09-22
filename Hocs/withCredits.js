@@ -1,20 +1,19 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import API_KEY from "../private";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import API_KEY from "../private";
 
 const MOVIE_URL = "https://api.themoviedb.org/3/movie";
 const TV_URL = "https://api.themoviedb.org/3/tv";
 
 const withCredits = (Component) => {
   const WithCredits = (props) => {
-    const id = props.match && props.match.params && props.match.params.id || props.id;
-
+    const id =
+      (props.match && props.match.params && props.match.params.id) || props.id;
 
     const [credits, setCredits] = useState(null);
 
     const location = useLocation();
-
 
     useEffect(() => {
       if (id) {
@@ -31,7 +30,9 @@ const withCredits = (Component) => {
     }, []);
 
     const getCredits = (conditionalUrl, conditionalLocalStorage) => {
-      const cache = localStorage.getItem(`${conditionalLocalStorage}-credits-${id}`);
+      const cache = localStorage.getItem(
+        `${conditionalLocalStorage}-credits-${id}`
+      );
       if (cache) {
         setCredits(JSON.parse(cache));
       } else {
@@ -58,3 +59,4 @@ const withCredits = (Component) => {
 export default withCredits;
 
 export { withCredits };
+

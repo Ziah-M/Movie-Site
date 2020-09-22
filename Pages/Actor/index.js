@@ -1,10 +1,9 @@
 import React from "react";
-import { getDefault } from "../../Data";
+import styled from "styled-components";
+import { withActorDetails, withActorRoles } from "../../Hocs";
 import Biography from "./Biography";
 import Cover from "./Cover";
 import Roles from "./Roles";
-import styled from "styled-components";
-import { withActorDetails, withActorRoles } from "../../Hocs";
 
 const Section = styled.div`
   width: 100vw;
@@ -22,13 +21,11 @@ const Actor = ({ actor, actorRoles }) => {
     <Wrapper>
       {actor && actorRoles && (
         <>
-          <Cover actor={actor} backdrop_path={actorRoles[0].backdrop_path}/>
+          <Cover actor={actor} backdrop_path={actorRoles[0].backdrop_path} />
           <Section>
             <Biography biography={biography} />
           </Section>
-          <Section>
-            {actorRoles && <Roles roles={actorRoles} />}
-          </Section>
+          <Section>{actorRoles && <Roles roles={actorRoles} />}</Section>
         </>
       )}
     </Wrapper>

@@ -1,18 +1,18 @@
+import BackButton from "./Buttons/BackButton";
 import LandingButton from "./Buttons/LandingButton";
-import LandingSlider from "./Sliders/LandingSlider";
-import LandingNavbar from "./Navigation/LandingNavbar";
-import LandingCarousel from "./Sliders/LandingCarousel";
+import LikeButton from "./Buttons/LikeButton";
 import SearchButton from "./Buttons/SearchButton";
+import SocialButton from "./Buttons/SocialButton";
 import MovieCardSmall from "./Cards/MovieCardSmall";
-import MovieRatingSmall from "./Other/MovieRatingSmall";
+import LandingNavbar from "./Navigation/LandingNavbar";
 import MovieRatingOverlay from "./Other/MovieRatingOverlay";
-import BackButton from './Buttons/BackButton'
-import SocialButton from './Buttons/SocialButton'
-import LikeButton from './Buttons/LikeButton'
-import RatingStars from './Other/RatingStars'
-import SocialBar from './Other/SocialBar'
-import CastSlider from './Sliders/CastSlider'
-import TrailerSlider from './Sliders/TrailerSlider'
+import MovieRatingSmall from "./Other/MovieRatingSmall";
+import RatingStars from "./Other/RatingStars";
+import SocialBar from "./Other/SocialBar";
+import CastSlider from "./Sliders/CastSlider";
+import LandingCarousel from "./Sliders/LandingCarousel";
+import LandingSlider from "./Sliders/LandingSlider";
+import TrailerSlider from "./Sliders/TrailerSlider";
 
 export {
   LandingButton,
@@ -31,3 +31,4 @@ export {
   CastSlider,
   TrailerSlider,
 };
+

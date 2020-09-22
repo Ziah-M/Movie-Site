@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import API_KEY from "../private";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import API_KEY from "../private";
 
 const MOVIE_URL = "https://api.themoviedb.org/3/movie";
 const TV_URL = "https://api.themoviedb.org/3/tv";
@@ -59,3 +59,4 @@ const withMovieReviews = (Component) => {
 export default withMovieReviews;
 
 export { withMovieReviews };
+

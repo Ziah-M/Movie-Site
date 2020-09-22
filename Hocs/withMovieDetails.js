@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import API_KEY from "../private";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import API_KEY from "../private";
 
 const URL = "https://api.themoviedb.org/3";
 const MOVIE_URL = "https://api.themoviedb.org/3/movie";
@@ -16,17 +16,17 @@ const withMovieDetails = (Component) => {
 
     const location = useLocation();
 
-
     useEffect(() => {
       if (id) {
         //set isTv from either props OR the route
         var isTv = props;
         var urlMatchesTv = location && location.pathname.includes("tv");
-       if (urlMatchesTv) {
+        if (urlMatchesTv) {
           isTv = true;
         }
         const conditionalUrl = isTv === true ? TV_URL : MOVIE_URL;
         const conditionalLocalStorage = isTv ? "tv-details" : "movie-details";
+
         getMovieDetails(conditionalUrl, conditionalLocalStorage);
       }
     }, []);
@@ -58,3 +58,4 @@ const withMovieDetails = (Component) => {
 export default withMovieDetails;
 
 export { withMovieDetails };
+

@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { MovieCardSmall } from "../../Components";
+import { LandingNavbar, MovieCardSmall } from "../../Components";
 import { withMovieDetails, withSearch } from "../../Hocs";
-import { LandingNavbar } from "../../Components";
 
 const Wrapper = styled.div`
   text-transform: uppercase;

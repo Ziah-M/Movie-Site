@@ -1,13 +1,10 @@
 import React from "react";
-import { LandingCarousel } from "../../Components";
-import { LandingButton } from "../../Components";
-import { LandingSlider } from "../../Components";
-import { LandingNavbar as Navbar } from "../../Components";
-import Footer from "../Landing/Footer";
+import { useHistory } from "react-router";
 import styled from "styled-components";
+import { LandingButton, LandingCarousel, LandingNavbar as Navbar, LandingSlider } from "../../Components";
 import { getCategories } from "../../Data";
 import { withFetchTv } from "../../Hocs";
-import { useHistory } from "react-router";
+import Footer from "../Landing/Footer";
 
 const Section = styled.div`
   width: 100vw;

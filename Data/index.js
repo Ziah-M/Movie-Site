@@ -8,8 +8,7 @@ const DEFAULT = {
     language: "EN",
     backdrop_path:
       "https://www.turnerpublishing.net/news/wp-content/uploads/2020/09/tenet-11-700x364.jpg",
-    poster_path:
-      "https://i.ebayimg.com/images/g/gRMAAOSwXVxe~Qs7/s-l640.jpg",
+    poster_path: "https://i.ebayimg.com/images/g/gRMAAOSwXVxe~Qs7/s-l640.jpg",
     overview:
       "A professional thief with $40 million in debt and his family's life on the line must commit one final heist - rob a futuristic airborne casino filled with the world's most dangerous criminals.",
     trailers: [""],
@@ -24,7 +23,8 @@ const DEFAULT = {
     cast: [
       {
         name: "Adam Copeland",
-        imgProfile: "https://image.tmdb.org/t/p/w185/xawkWKkgbOx5atAMeFDh9rjHGWt.jpg",
+        imgProfile:
+          "https://image.tmdb.org/t/p/w185/xawkWKkgbOx5atAMeFDh9rjHGWt.jpg",
       },
     ],
   },

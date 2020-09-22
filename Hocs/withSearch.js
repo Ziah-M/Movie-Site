@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import API_KEY from "../private";
 import { withFetchMovies } from "./index";
 
@@ -33,9 +33,11 @@ const withSearch = (Component) => {
         setSearch(JSON.parse(cache));
       } else {
         console.log("Searching");
-        const searchQueryString=encodeURI(searchTerm);
+        const searchQueryString = encodeURI(searchTerm);
         axios
-          .request(`${MULTI_SEARCH}?api_key=${API_KEY}&query=${searchQueryString}`)
+          .request(
+            `${MULTI_SEARCH}?api_key=${API_KEY}&query=${searchQueryString}`
+          )
           .then((result) => {
             localStorage.setItem(
               `movie-search-${searchTerm}`,
@@ -61,3 +63,4 @@ const withSearch = (Component) => {
 export default withSearch;
 
 export { withSearch };
+

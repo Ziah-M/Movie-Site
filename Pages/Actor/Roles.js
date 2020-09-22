@@ -66,10 +66,10 @@ const Summary = styled.div`
   text-transform: none;
 `;
 
-const HeadingTitle=styled.div`
-  font-size:40px;
-text-transform:uppercase;
-`
+const HeadingTitle = styled.div`
+  font-size: 40px;
+  text-transform: uppercase;
+`;
 
 const Roles = ({ roles }) => {
   return (
@@ -84,7 +84,7 @@ const Roles = ({ roles }) => {
             >
               <Container>
                 <MovieCard>
-                  <Poster url={role.poster_path} isMovie id={role.id}/>
+                  <Poster url={role.poster_path} isMovie id={role.id} />
                 </MovieCard>
                 <Details>
                   <Title>{role.name || role.title}</Title>

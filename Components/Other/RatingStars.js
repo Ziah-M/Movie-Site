@@ -1,7 +1,7 @@
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.div`
   height: 100%;
@@ -10,10 +10,7 @@ const Wrapper = styled.div`
 `;
 
 const Star = ({ isRated = false }) => (
-  <StyledStar
-    icon={faStar}
-    className={`${isRated ? "is-rated" : ""}`}
-  />
+  <StyledStar icon={faStar} className={`${isRated ? "is-rated" : ""}`} />
 );
 
 const StyledStar = styled(FontAwesomeIcon)`

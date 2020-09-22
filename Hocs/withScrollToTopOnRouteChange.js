@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { withRouter } from "react-router-dom";
 
 const scrollToTop = (Component) => {
   const ScrollToTop = (props) => {

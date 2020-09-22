@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import {
   BackButton,
-  SocialButton,
+
   LikeButton,
   MovieCardSmall,
-  RatingStars,
+  RatingStars, SocialButton
 } from "../../Components";
 import { numberWithCommas } from "../../Helper";
 

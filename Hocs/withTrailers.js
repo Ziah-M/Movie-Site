@@ -1,17 +1,17 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import API_KEY from "../private";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import API_KEY from "../private";
 
 const MOVIE_URL = "https://api.themoviedb.org/3/movie";
 const TV_URL = "https://api.themoviedb.org/3/tv";
 
 const withTrailers = (Component) => {
   const WithTrailers = (props) => {
-    const id = props.match && props.match.params && props.match.params.id || props.id;
+    const id =
+      (props.match && props.match.params && props.match.params.id) || props.id;
 
     const location = useLocation();
-
 
     const [trailers, setTrailers] = useState(null);
 
@@ -30,7 +30,9 @@ const withTrailers = (Component) => {
     }, []);
 
     const getTrailers = (conditionalUrl, conditionalLocalStorage) => {
-      const cache = localStorage.getItem(`${conditionalLocalStorage}-trailers-${id}`);
+      const cache = localStorage.getItem(
+        `${conditionalLocalStorage}-trailers-${id}`
+      );
       if (cache) {
         setTrailers(JSON.parse(cache));
       } else {
@@ -65,3 +67,4 @@ const withTrailers = (Component) => {
 export default withTrailers;
 
 export { withTrailers };
+

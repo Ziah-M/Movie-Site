@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { MovieCardSmall as Poster } from "../../Components";
-import {withReviews} from '../../Hocs'
+import { withReviews } from "../../Hocs";
 
 const Wrapper = styled.div`
   height: 100%;
@@ -48,11 +47,11 @@ const Name = styled.div`
 
 const Review = styled.div`
   font-size: 18px;
-  max-width:100%;
+  max-width: 100%;
   color: white;
   margin: 30px 0;
   text-transform: none;
-  overflow-x:hidden;
+  overflow-x: hidden;
 `;
 
 const Link = styled.div`
@@ -60,27 +59,48 @@ const Link = styled.div`
   font-size: 18px;
 `;
 
-const Title=styled.div`
-  font-size:40px;
-text-transform:uppercase;
-`
+const Title = styled.div`
+  font-size: 40px;
+  text-transform: uppercase;
+`;
 
-const Reviews = ({ movieReviews:reviews=[]}) => {
+const Reviews = ({
+  movieReviews: reviews = [
+    {
+      author: "",
+      url: "",
+      content: "No reviews for this movie have been posted yet.",
+    },
+  ],
+}) => {
+  if (!reviews) {
+    console.log("no reviews found");
+    reviews = [
+      {
+        author: "",
+        url: "",
+        content: "No reviews for this movie have been posted yet.",
+      },
+    ];
+  }
   return (
     <Wrapper>
       <Title>POPULAR REVIEWS</Title>
-      {reviews && reviews.map((review, index) => (
-        <Panel
-        key={`review-panel-${index}`}
-          className={`${index % 2 === 1 ? "accent-left" : "accent-right"}`}
-        >
-          <Container>
-            <Name>{review.author}</Name>
-            <Review>{review.content.substr(0, 400)}...</Review>
-            <Link><a href={review.url}>See full review &nbsp;&nbsp;></a></Link>
-          </Container>
-        </Panel>
-      ))}
+      {reviews &&
+        reviews.map((review, index) => (
+          <Panel
+            key={`review-panel-${index}`}
+            className={`${index % 2 === 1 ? "accent-left" : "accent-right"}`}
+          >
+            <Container>
+              <Name>{review.author}</Name>
+              <Review>{review.content.substr(0, 400)}...</Review>
+              <Link>
+                <a href={review.url}>See full review &nbsp;&nbsp;</a>
+              </Link>
+            </Container>
+          </Panel>
+        ))}
     </Wrapper>
   );
 };

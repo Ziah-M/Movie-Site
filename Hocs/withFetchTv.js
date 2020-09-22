@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import API_KEY from "../private";
 const URL = "https://api.themoviedb.org/3";
 const TV_URL = "https://api.themoviedb.org/3/tv";
@@ -115,3 +115,4 @@ const withFetchTv = (Component) => {
 export default withFetchTv;
 
 export { withFetchTv };
+

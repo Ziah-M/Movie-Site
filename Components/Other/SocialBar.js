@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const SocialBar = () => {
-    return (
-        <div>
-            Social Bar
-        </div>
-    )
-}
+  return <div>Social Bar</div>;
+};
 
-export default SocialBar
+export default SocialBar;

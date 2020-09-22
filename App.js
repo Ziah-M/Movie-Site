@@ -1,8 +1,8 @@
 import React from "react";
-import * as P from "./Pages";
+import { Route, Switch } from "react-router";
 import styled from "styled-components";
 import { withFetchMovies, withScrollToTopOnRouteChange } from "./Hocs";
-import { Switch, Route } from "react-router";
+import * as P from "./Pages";
 import * as R from "./ROUTES";
 
 const DefaultStyles = styled.div`
@@ -31,7 +31,7 @@ const App = ({
           <Route path={R.ACTOR} component={P.Actor} />
           <Route path={R.SEARCH} component={P.Search} />
           <Route path={R.TV_DETAILS} component={P.Movie} />
-          <Route path={R.LANDING_TV} component={P.LandingTv}/>
+          <Route path={R.LANDING_TV} component={P.LandingTv} />
           <Route
             exact
             path={R.LANDING}

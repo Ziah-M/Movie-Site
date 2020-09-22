@@ -1,12 +1,12 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import API_KEY from "../private";
 const MOVIE_URL = "https://api.themoviedb.org/3/person";
 
 const withActorRoles = (Component) => {
   const WithActorRoles = (props) => {
-    const id = props.match && props.match.params && props.match.params.id || props.id;
-
+    const id =
+      (props.match && props.match.params && props.match.params.id) || props.id;
 
     const [actorRoles, setActorRoles] = useState(null);
 
@@ -44,3 +44,4 @@ const withActorRoles = (Component) => {
 export default withActorRoles;
 
 export { withActorRoles };
+

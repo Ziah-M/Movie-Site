@@ -9,10 +9,10 @@ const Wrapper = styled.div`
   font-size: 18px;
 `;
 
-const Title=styled.div`
-  font-size:40px;
-text-transform:uppercase;
-`
+const Title = styled.div`
+  font-size: 40px;
+  text-transform: uppercase;
+`;
 
 const Biography = ({ biography }) => {
   return (
