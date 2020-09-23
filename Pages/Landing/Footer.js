@@ -121,7 +121,9 @@ const SocialButtons = styled.div`
   justify-content: center;
 `;
 
-const Icon = styled(FontAwesomeIcon)``;
+const Icon = styled(FontAwesomeIcon)`
+  line-height: 40px;
+`;
 
 const IconContainer = styled.div`
   border-radius: 50%;

@@ -104,8 +104,6 @@ const Search = ({
       data = results;
   }
 
-  console.log("data", data);
-
   return (
     <>
       <LandingNavbar />
@@ -122,23 +120,21 @@ const Search = ({
               const imgUrl = result.poster_path || result.profile_path;
 
               return (
-                <>
-                  <MovieSection key={`search-grid-${index}`}>
-                    <MovieCard>
-                      <MovieCardSmall
-                        className="rounded"
-                        url={imgUrl}
-                        id={result.id}
-                        isMovie={result.media_type === "movie"}
-                        isPerson={result.media_type === "person"}
-                      ></MovieCardSmall>
-                    </MovieCard>
-                    <Title>{title}</Title>
-                    {(result.media_type === "movie" || isAllMovies) && (
-                      <FetchedGenres id={result.id}></FetchedGenres>
-                    )}
-                  </MovieSection>
-                </>
+                <MovieSection key={`search-grid-${index}`}>
+                  <MovieCard>
+                    <MovieCardSmall
+                      className="rounded"
+                      url={imgUrl}
+                      id={result.id}
+                      isMovie={result.media_type === "movie"}
+                      isPerson={result.media_type === "person"}
+                    ></MovieCardSmall>
+                  </MovieCard>
+                  <Title>{title}</Title>
+                  {(result.media_type === "movie" || isAllMovies) && (
+                    <FetchedGenres id={result.id}></FetchedGenres>
+                  )}
+                </MovieSection>
               );
             })}
           </ResultsGrid>
