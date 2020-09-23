@@ -14,6 +14,7 @@ const DefaultStyles = styled.div`
 
 const Wrapper = styled.div`
   background: linear-gradient(165deg, #251431 0%, #161130 22%);
+max-width:100%;
 `;
 
 const App = ({

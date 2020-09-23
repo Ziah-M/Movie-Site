@@ -12,6 +12,8 @@ import Footer from "./Footer";
 
 const Section = styled.div`
   width: 100vw;
+  max-width:100%;
+  margin:0;
 
   &#carousel {
     height: 60vw;

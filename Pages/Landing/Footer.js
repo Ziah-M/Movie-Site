@@ -52,7 +52,7 @@ const Footer = (props) => {
 
 const Wrapper = styled.div`
   width: 100vw;
-  max-width: 100vw;
+  max-width: 100%;
   min-height: 500px;
   height: auto;
 
