@@ -55,13 +55,11 @@ const Title = styled.div`
   margin: 5px 0 0 5px;
   font-size: 14px;
   font-weight: 500;
-  max-width: 10vw;
-`;
+  max-width: 100%;
 
-const Genres = styled.div`
-  color: white;
-  opacity: 0.6;
-  font-size: 12px;
+  @media (max-width: 500px) {
+    font-size: 12px;
+  }
 `;
 
 const CastSlider = ({ cast = [] }) => {

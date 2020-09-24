@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import {
   BackButton,
-
   LikeButton,
   MovieCardSmall,
-  RatingStars, SocialButton
+  RatingStars,
+  SocialButton,
 } from "../../Components";
 import { numberWithCommas } from "../../Helper";
 
@@ -32,6 +32,11 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (max-width: 500px) {
+    transform: scale(0.7);
+    margin-left:10px;
+  }
 `;
 
 const Container = styled.div`
@@ -69,6 +74,8 @@ const Position = styled.div`
 `;
 
 const MovieCard = styled.div`
+  min-width: 100px;
+  min-height: 150px;
   width: 13vw;
   height: calc(1.5 * 13 vw);
 `;

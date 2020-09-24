@@ -31,6 +31,8 @@ const Panel = styled.div`
 `;
 
 const MovieCard = styled.div`
+  min-width: 100px;
+  min-height: 150px;
   width: 13vw;
   height: calc(1.5 * 13 vw);
 `;
@@ -41,20 +43,31 @@ const Container = styled.div`
   justify-content: center;
   height: auto;
   width: auto;
+  width: 100%;
 `;
 
 const Title = styled.div`
   font-size: 18px;
   font-weight: 700;
+  width: 100%;
+  text-align: center;
 `;
 
 const Released = styled.div`
   font-size: 16px;
   margin: 10px 0;
+  width: 100%;
+
+  text-align: center;
+
+  @media (max-width: 500px) {
+    font-size: 12px;
+  }
 `;
 
 const Details = styled.div`
-  margin-left: 2vw;
+  margin-left: 15px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,6 +77,12 @@ const Details = styled.div`
 const Summary = styled.div`
   margin: 20px 0;
   text-transform: none;
+
+  font-size: 18px;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 
 const HeadingTitle = styled.div`

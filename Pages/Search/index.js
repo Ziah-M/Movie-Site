@@ -19,6 +19,7 @@ const ResultsGrid = styled.div`
   height: auto;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const Title = styled.div`
@@ -46,7 +47,7 @@ const GenresWrapper = styled.div`
   color: white;
   opacity: 0.6;
   font-size: 12px;
-  max-width: 10vw;
+  max-width: 100%;
   text-transform: capitalize;
 `;
 

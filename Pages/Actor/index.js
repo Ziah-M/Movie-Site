@@ -9,6 +9,11 @@ const Section = styled.div`
   width: 100vw;
   margin: 100px 0 0 0;
   padding: 0 15vw;
+
+  @media (max-width:500px){
+    padding:0 40px;
+    margin:40px 0 0 0;
+  }
 `;
 
 const Wrapper = styled.div`

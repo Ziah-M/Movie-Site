@@ -5,16 +5,17 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   height: auto;
   width: 100%;
+  min-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 
   & ${Carousel} {
-    width: 50vw;
+    width: 100%;
     height: auto;
     margin: 20px 0;
 
-    max-width: 600px;
+    max-width: 100%;
     max-height: 600px;
     position: relative;
 
@@ -25,7 +26,7 @@ const Wrapper = styled.div`
 `;
 
 const MovieCard = styled(Carousel.Item)`
-  width: 50vw;
+  width: 100%;
   height: auto;
 
   max-width: 600px;
@@ -33,8 +34,8 @@ const MovieCard = styled(Carousel.Item)`
 `;
 
 const IFrame = styled.iframe`
-  width: 50vw;
-  height: 50vw;
+  width: 80vw;
+  height: 80vw;
   max-width: 600px;
   max-height: 600px;
 `;

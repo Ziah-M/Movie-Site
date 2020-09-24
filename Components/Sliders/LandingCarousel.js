@@ -56,6 +56,7 @@ const Wrapper = styled.div`
 
   /* OVERWRITING CAROUSEL INDICATOR STYLING AND POSITIONING */
   & .carousel-indicators {
+   
     li {
       margin: 0 0.1vw;
       width: 33.3vw;

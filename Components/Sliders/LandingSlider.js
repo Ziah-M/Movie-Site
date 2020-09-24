@@ -46,6 +46,10 @@ const Overlay = styled.div`
   position: absolute;
   top: 5%;
   left: 0;
+
+  @media (max-width: 450px) {
+    transform: scale(0.7) translate(-15%);
+  }
 `;
 
 const MovieSection = styled.div`
@@ -59,19 +63,26 @@ const Title = styled.div`
   margin: 5px 0;
   font-size: 16px;
   font-weight: 500;
-  max-width: 10vw;
+  max-width: 100%;
+
+  @media (max-width: 450px) {
+    font-size: 11px;
+  }
 `;
 
 const GenresWrapper = styled.div`
   color: white;
   opacity: 0.6;
   font-size: 12px;
+  @media (max-width: 450px) {
+    font-size: 10px;
+  }
   max-width: 10vw;
 `;
 
 const LandingSlider = ({ movies, isTv = false }) => {
   return (
-    <Wrapper>
+    <Wrapper id="landing-slider">
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <MovieSection key={`landing-slider-${index}`}>
@@ -104,7 +115,7 @@ function NextArrow(props) {
       style={{
         ...style,
         display: "block",
-        transform: "translate(-5vw, -4vw) scale(1.5)",
+        transform: "translate(-5vw, -8vh) scale(1.5)",
         zIndex: "1000",
         color: "transparent",
         background: "transparent",
@@ -123,7 +134,7 @@ function PrevArrow(props) {
         ...style,
         display: "block",
         background: "transparent",
-        transform: "translate(5vw, -4vw) scale(1.5)",
+        transform: "translate(5vw, -8vh) scale(1.5)",
         zIndex: "1000",
       }}
       onClick={onClick}

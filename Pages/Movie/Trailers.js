@@ -21,11 +21,18 @@ const Heading = styled.div`
   width: 100%;
 `;
 
+const TrailersContainer=styled.div`
+width:100%;
+height:auto;
+`
+
 const Trailers = ({ trailers }) => {
   return (
     <Wrapper>
       <Heading>TRAILERS</Heading>
-      {trailers && <TrailerSlider trailers={trailers} />}
+      <TrailersContainer>
+        {trailers && <TrailerSlider trailers={trailers} />}
+      </TrailersContainer>
     </Wrapper>
   );
 };

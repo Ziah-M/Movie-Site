@@ -1,7 +1,8 @@
 import {
-  faBolt, faHome, faSearch,
-
-  faUser
+  faBolt,
+  faHome,
+  faSearch,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
@@ -51,6 +52,7 @@ const Search = styled.input`
 const Icon = styled(FontAwesomeIcon)`
   height: 50px;
   width: 50px;
+
   &:hover {
     & * {
       color: skyblue;
@@ -69,6 +71,9 @@ const Searchbar = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 500px) {
+    width: 125px;
+  }
 `;
 
 const SearchIcon = styled.button`
@@ -83,6 +88,12 @@ const SearchIcon = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 500px) {
+    width: 30px;
+    right: 10px;
+    font-size: 10px;
+  }
 
   &:hover * {
     color: skyblue;

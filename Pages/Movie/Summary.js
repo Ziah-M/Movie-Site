@@ -13,6 +13,10 @@ const Text = styled.div`
   font-size: 18px;
   margin-top: 15px;
   text-transform: none;
+
+  @media (max-width:500px){
+    font-size:14px;
+  }
 `;
 
 const Summary = ({ summary }) => {

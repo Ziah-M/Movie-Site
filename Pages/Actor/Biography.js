@@ -14,11 +14,21 @@ const Title = styled.div`
   text-transform: uppercase;
 `;
 
+const Text=styled.div`
+  width:100%;
+  padding: 10px;
+  font-size:18px;
+
+  @media (max-width:500px){
+    font-size:14px;
+  }
+`
+
 const Biography = ({ biography }) => {
   return (
     <Wrapper>
       <Title>BIOGRAPHY</Title>
-      <p>{biography.substr(0, 750)}...</p>
+      <Text>{biography.substr(0, 750)}...</Text>
     </Wrapper>
   );
 };

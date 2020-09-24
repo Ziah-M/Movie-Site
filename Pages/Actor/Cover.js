@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  BackButton,
-  MovieCardSmall,
-
-  SocialButton
-} from "../../Components";
+import { BackButton, MovieCardSmall, SocialButton } from "../../Components";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -67,6 +62,8 @@ const Position = styled.div`
 `;
 
 const MovieCard = styled.div`
+  min-width: 100px;
+  min-height: 150px;
   width: 13vw;
   height: calc(1.5 * 13 vw);
 `;

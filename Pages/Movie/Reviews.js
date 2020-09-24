@@ -52,11 +52,19 @@ const Review = styled.div`
   margin: 30px 0;
   text-transform: none;
   overflow-x: hidden;
+
+  @media (max-width:500px){
+    font-size:14px;
+  }
 `;
 
 const Link = styled.div`
   color: #bfbfbf;
   font-size: 18px;
+  
+  @media (max-width:500px){
+    font-size:14px;
+  }
 `;
 
 const Title = styled.div`

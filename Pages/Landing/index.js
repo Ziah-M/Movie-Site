@@ -12,8 +12,8 @@ import Footer from "./Footer";
 
 const Section = styled.div`
   width: 100vw;
-  max-width:100%;
-  margin:0;
+  max-width: 100%;
+  margin: 0;
 
   &#carousel {
     height: 60vw;
@@ -32,17 +32,31 @@ const Section = styled.div`
     min-height: 150px;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 450px) {
+      height: 100px;
+      min-height: 100px;
+    }
+  }
+
+  & #landing-slider {
+    margin-bottom: 20px;
   }
 `;
 
 const Category = styled.div`
   height: auto;
   padding: 0 10vw 50px 10vw;
+
+  @media (max-width: 450px) {
+    padding-bottom: 25px;
+  }
 `;
 
 const CategoryTitle = styled.h2`
   font-size: 40px;
   text-transform: uppercase;
+  margin-bottom: 20px;
 `;
 
 const Divider = styled.div`
@@ -84,9 +98,7 @@ const Landing = ({
         {moviesPopular && (
           <Category id="popular">
             <CategoryTitle>{categories[1]}</CategoryTitle>
-            <br />
             <LandingSlider movies={moviesPopular} />
-            <br />
             <Divider />
           </Category>
         )}
@@ -94,9 +106,7 @@ const Landing = ({
         {moviesPlayingNow && (
           <Category id="now-playing">
             <CategoryTitle>{categories[2]}</CategoryTitle>
-            <br />
             <LandingSlider movies={moviesPlayingNow} />
-            <br />
             <Divider />
           </Category>
         )}
@@ -104,9 +114,7 @@ const Landing = ({
         {moviesComingSoon && (
           <Category id="upcoming">
             <CategoryTitle>{categories[0]}</CategoryTitle>
-            <br />
             <LandingSlider movies={moviesComingSoon} />
-            <br />
             <Divider />
           </Category>
         )}
@@ -114,9 +122,7 @@ const Landing = ({
         {moviesTopRated && (
           <Category id="top-rated">
             <CategoryTitle>{categories[3]}</CategoryTitle>
-            <br />
             <LandingSlider movies={moviesTopRated} />
-            <br />
             <Divider />
           </Category>
         )}
