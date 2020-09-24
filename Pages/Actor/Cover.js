@@ -88,13 +88,11 @@ const Cover = ({ actor, backdrop_path }) => {
   const {
     name,
     rating,
-    gender,
+    gender:genderString,
     known_for_department,
     birthday,
     profile_path,
   } = actor;
-
-  const genderString = gender === 2 ? "Male" : "Female";
 
   const year = new Date().getFullYear();
   const age =

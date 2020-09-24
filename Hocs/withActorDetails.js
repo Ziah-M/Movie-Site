@@ -25,11 +25,32 @@ const withActorDetails = (Component) => {
         axios
           .request(`${MOVIE_URL}/${id}?api_key=${API_KEY}`)
           .then((result) => {
+            const actorDetails = result.data;
+            if (!actorDetails.name) {
+              actorDetails.Name = "Name not provided";
+            }
+
+            if (!actorDetails.rating) {
+              actorDetails.rating = 0;
+            }
+
+            if (actorDetails.gender === 0) {
+              actorDetails.gender = "Female";
+            } else if (actorDetails.gender === 1) {
+              actorDetails.gender = "Male";
+            } else {
+              actorDetails.gender = "Gender not provided";
+            }
+
+            if (!actorDetails.known_for_department) {
+              actorDetails.known_for_department = "Person";
+            }
+
             localStorage.setItem(
               `movie-actor-${id}`,
-              JSON.stringify(result.data)
+              JSON.stringify(actorDetails)
             );
-            setActorDetails(result.data);
+            setActorDetails(actorDetails);
           })
           .catch((error) => console.log("error fetching actor details", error));
       }
@@ -44,4 +65,3 @@ const withActorDetails = (Component) => {
 export default withActorDetails;
 
 export { withActorDetails };
-
