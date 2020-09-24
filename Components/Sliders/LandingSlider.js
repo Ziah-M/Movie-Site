@@ -5,22 +5,28 @@ import { withMovieDetails } from "../../Hocs";
 import { MovieCardSmall, MovieRatingOverlay } from "../index";
 
 const settings = {
+  className: "center",
   dots: false,
   infinite: true,
-  speed: 800,
+  speed: 300,
   slidesToShow: 5,
-  slidesToScroll: 3,
-  pauseOnHover: true,
-  centrePadding: "2vw",
-  centerMode: true,
+  slidesToScroll: 1,
+  centrePadding: "10px",
+  swipeToSlide: true,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
 
   responsive: [
     {
-      breakpoint: 600,
+      breakpoint: 500,
       settings: {
         slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 4,
       },
     },
   ],
@@ -35,6 +41,8 @@ const MovieCard = styled.div`
   position: relative;
 
   /* aspect ratio of card */
+  min-width: 100px;
+  min-height: 150px;
   width: 13vw;
   height: calc(1.5 * 13 vw);
 
@@ -54,6 +62,7 @@ const Overlay = styled.div`
 
 const MovieSection = styled.div`
   height: auto;
+  min-width: 100px;
   width: 13vw;
 `;
 

@@ -21,7 +21,6 @@ const MovieCardSmall = ({
   const history = useHistory();
 
   const handleMouseDown = (event) => {
-    console.log(event);
     setMouseXStart(event.clientX);
   };
 
@@ -29,8 +28,8 @@ const MovieCardSmall = ({
     console.log(event);
 
     if (
-      event.clientX >= mouseXStart - 40 &&
-      event.clientX <= mouseXStart + 40
+      event.clientX >= mouseXStart - 20 &&
+      event.clientX <= mouseXStart + 20
     ) {
       triggerRouting();
     }

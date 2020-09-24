@@ -4,22 +4,28 @@ import styled from "styled-components";
 import { MovieCardSmall } from "../index";
 
 const settings = {
+  className: "center",
   dots: false,
   infinite: true,
-  speed: 800,
+  speed: 300,
   slidesToShow: 5,
-  slidesToScroll: 3,
-  pauseOnHover: true,
-  centerMode: true,
-  centerPadding: "2vw",
+  slidesToScroll: 1,
+  centrePadding: "10px",
+  swipeToSlide: true,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
 
   responsive: [
     {
-      breakpoint: 800,
+      breakpoint: 500,
       settings: {
-        slidesToShow: 5,
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 4,
       },
     },
   ],
@@ -34,8 +40,13 @@ const MovieCard = styled.div`
   position: relative;
 
   /* aspect ratio of card */
+  min-width: 100px;
+  min-height: 150px;
   width: 13vw;
   height: calc(1.5 * 13 vw);
+
+  max-width: 300px;
+  max-height: 300px * 1.5;
 `;
 
 const Overlay = styled.div`
@@ -46,6 +57,7 @@ const Overlay = styled.div`
 
 const MovieSection = styled.div`
   height: auto;
+  min-width: 100px;
   width: 13vw;
 `;
 
@@ -58,7 +70,7 @@ const Title = styled.div`
   max-width: 100%;
 
   @media (max-width: 500px) {
-    font-size: 12px;
+    font-size: 11px;
   }
 `;
 
