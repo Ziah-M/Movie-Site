@@ -49,21 +49,24 @@ const Review = styled.div`
   font-size: 18px;
   max-width: 100%;
   color: white;
-  margin: 30px 0;
+  height: auto;
   text-transform: none;
   overflow-x: hidden;
+  overflow-y: visible;
 
-  @media (max-width:500px){
-    font-size:14px;
+  padding: 30px 0;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
   }
 `;
 
 const Link = styled.div`
   color: #bfbfbf;
   font-size: 18px;
-  
-  @media (max-width:500px){
-    font-size:14px;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
   }
 `;
 

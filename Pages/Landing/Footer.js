@@ -18,7 +18,7 @@ const Footer = (props) => {
             <Link onClick={() => scroll.scrollToTop()}>Home</Link>
           </Headings>
           <LeftRow>
-            <span>portfolio:</span>
+            <span>portfolio: </span>
             <span>
               <a href="https://zm-portfolio.web.app">zm-portfolio.web.app</a>
             </span>
