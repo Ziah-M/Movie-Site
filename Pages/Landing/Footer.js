@@ -3,6 +3,7 @@ import { faFileCode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
+import { animateScroll as scroll } from "react-scroll";
 
 const ATTRIBUTION_LOGO =
   "https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg";
@@ -13,7 +14,8 @@ const Footer = (props) => {
       <ColLeft>
         <LeftInner>
           <Headings>
-            MOVIE SERVER &nbsp; Home &nbsp; Profile &nbsp; Discover
+            MOVIE SERVER &nbsp;&nbsp;&nbsp;{" "}
+            <Link onClick={() => scroll.scrollToTop()}>Home</Link>
           </Headings>
           <LeftRow>
             <span>portfolio:</span>
@@ -49,6 +51,12 @@ const Footer = (props) => {
     </Wrapper>
   );
 };
+
+const Link = styled.div`
+  &:hover {
+    color: slategray;
+  }
+`;
 
 const Wrapper = styled.div`
   width: 100vw;

@@ -8,7 +8,8 @@ import Summary from "./Summary";
 import Trailers from "./Trailers";
 
 const Section = styled.div`
-  width: 100vw;
+  width: 100%;
+  max-width:100%;
   margin: 100px 0 0 0;
   padding: 0 15vw;
   height: auto;

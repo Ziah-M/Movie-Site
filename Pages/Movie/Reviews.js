@@ -11,7 +11,7 @@ const Panel = styled.div`
   background: #1c262a;
   color: white;
   height: auto;
-  width: 70vw;
+  width: 100%;
   padding: 2vw 4vw 4vw 4vw;
   margin: 50px 0;
   border: 4px solid transparent;

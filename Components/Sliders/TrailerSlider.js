@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  & ${Carousel} {
+  #trailer-carousel {
     width: 100%;
     height: auto;
     margin: 20px 0;
@@ -55,7 +55,7 @@ const Title = styled.div`
 const TrailerSlider = ({ trailers = [] }) => {
   return (
     <Wrapper>
-      <Carousel interval={0}>
+      <Carousel interval={100000} id='trailer-carousel'>
         {trailers &&
           trailers.map((trailer, index) => (
             <MovieCard key={`trailer-item-${index}`}>

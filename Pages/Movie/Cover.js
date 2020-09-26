@@ -11,7 +11,8 @@ import { numberWithCommas } from "../../Helper";
 
 const Wrapper = styled.div`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   background-image: url(${(props) => props.url});
   background-size: 100% 100%;
   position: relative;
@@ -35,7 +36,7 @@ const Details = styled.div`
 
   @media (max-width: 500px) {
     transform: scale(0.7);
-    margin-left:10px;
+    margin-left: 10px;
   }
 `;
 

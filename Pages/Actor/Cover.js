@@ -4,7 +4,8 @@ import { BackButton, MovieCardSmall, SocialButton } from "../../Components";
 
 const Wrapper = styled.div`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   background-image: url(${(props) => props.url});
   background-size: 100% 100%;
   position: relative;
@@ -88,7 +89,7 @@ const Cover = ({ actor, backdrop_path }) => {
   const {
     name,
     rating,
-    gender:genderString,
+    gender: genderString,
     known_for_department,
     birthday,
     profile_path,
