@@ -1,10 +1,15 @@
-import React from "react";
-import { useHistory } from "react-router";
-import styled from "styled-components";
-import { LandingButton, LandingCarousel, LandingNavbar as Navbar, LandingSlider } from "../../Components";
-import { getCategories } from "../../Data";
-import { withFetchTv } from "../../Hocs";
-import Footer from "../Landing/Footer";
+import React from 'react'
+import { useHistory } from 'react-router'
+import styled from 'styled-components'
+import {
+  LandingButton,
+  LandingCarousel,
+  LandingNavbar as Navbar,
+  LandingSlider,
+} from '../../Components'
+import { getCategories } from '../../Data'
+import { withFetchTv } from '../../Hocs'
+import Footer from '../Landing/Footer'
 
 const Section = styled.div`
   width: 100vw;
@@ -24,17 +29,17 @@ const Section = styled.div`
     justify-content: center;
     align-items: center;
   }
-`;
+`
 
 const Category = styled.div`
   height: auto;
   padding: 0 10vw 50px 10vw;
-`;
+`
 
 const CategoryTitle = styled.h2`
   font-size: 40px;
   text-transform: uppercase;
-`;
+`
 
 const Divider = styled.div`
   background-image: radial-gradient(
@@ -44,7 +49,7 @@ const Divider = styled.div`
   );
   height: 2px;
   width: 100%;
-`;
+`
 
 const Landing = ({
   categories = getCategories(),
@@ -53,7 +58,7 @@ const Landing = ({
   tvPopular,
   tvTopRated,
 }) => {
-  const history = useHistory();
+  const history = useHistory()
   return (
     <div>
       <Section id="navbar">
@@ -63,10 +68,10 @@ const Landing = ({
         <LandingCarousel movies={tvPopular} />
       </Section>
       <Section id="select-category">
-        <LandingButton onClick={() => history.push("/movieserver")}>
+        <LandingButton onClick={() => history.push('/movieserver')}>
           Movies
         </LandingButton>
-        <LandingButton onClick={() => history.push("/movieserver/tv")}>
+        <LandingButton onClick={() => history.push('/movieserver/tv')}>
           TV Shows
         </LandingButton>
       </Section>
@@ -114,7 +119,7 @@ const Landing = ({
       </Section>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default withFetchTv(Landing);
+export default withFetchTv(Landing)

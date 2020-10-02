@@ -1,14 +1,14 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react'
+import { useHistory } from 'react-router-dom'
+import styled from 'styled-components'
 import {
   LandingButton,
   LandingCarousel,
   LandingNavbar as Navbar,
   LandingSlider,
-} from "../../Components";
-import { getCategories } from "../../Data";
-import Footer from "./Footer";
+} from '../../Components'
+import { getCategories } from '../../Data'
+import Footer from './Footer'
 
 const Section = styled.div`
   width: 100vw;
@@ -42,7 +42,7 @@ const Section = styled.div`
   & #landing-slider {
     margin-bottom: 20px;
   }
-`;
+`
 
 const Category = styled.div`
   height: auto;
@@ -51,13 +51,13 @@ const Category = styled.div`
   @media (max-width: 450px) {
     padding-bottom: 25px;
   }
-`;
+`
 
 const CategoryTitle = styled.h2`
   font-size: 40px;
   text-transform: uppercase;
   margin-bottom: 20px;
-`;
+`
 
 const Divider = styled.div`
   background-image: radial-gradient(
@@ -67,7 +67,7 @@ const Divider = styled.div`
   );
   height: 2px;
   width: 100%;
-`;
+`
 
 const Landing = ({
   categories = getCategories(),
@@ -77,7 +77,7 @@ const Landing = ({
   moviesTrending,
   moviesPlayingNow,
 }) => {
-  const history = useHistory();
+  const history = useHistory()
   return (
     <div>
       <Section id="navbar">
@@ -87,10 +87,10 @@ const Landing = ({
         <LandingCarousel movies={moviesTrending} />
       </Section>
       <Section id="select-category">
-        <LandingButton onClick={() => history.push("/movieserver")}>
+        <LandingButton onClick={() => history.push('/movieserver')}>
           Movies
         </LandingButton>
-        <LandingButton onClick={() => history.push("/movieserver/tv")}>
+        <LandingButton onClick={() => history.push('/movieserver/tv')}>
           TV Shows
         </LandingButton>
       </Section>
@@ -129,7 +129,7 @@ const Landing = ({
       </Section>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Landing;
+export default Landing

@@ -1,7 +1,7 @@
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import styled from "styled-components";
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react'
+import styled from 'styled-components'
 
 const Wrapper = styled.div`
   height: 25px;
@@ -12,14 +12,12 @@ const Wrapper = styled.div`
   text-align: center;
   padding: 1px 0;
   font-size: 14px;
-`;
+`
 
-const MovieRatingOverlay = ({ rating = 0 }) => {
-  return (
-    <Wrapper>
-      <FontAwesomeIcon style={{ opacity: 0.8 }} icon={faStar} /> {rating}
-    </Wrapper>
-  );
-};
+const MovieRatingOverlay = ({ rating = 0 }) => (
+  <Wrapper>
+    <FontAwesomeIcon style={{ opacity: 0.8 }} icon={faStar} /> {rating}
+  </Wrapper>
+)
 
-export default MovieRatingOverlay;
+export default MovieRatingOverlay

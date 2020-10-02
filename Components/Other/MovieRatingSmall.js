@@ -1,7 +1,5 @@
-import React from "react";
+import React from 'react'
 
-const MovieRatingSmall = () => {
-  return <div>MovieRatingSmall</div>;
-};
+const MovieRatingSmall = () => <div>MovieRatingSmall</div>
 
-export default MovieRatingSmall;
+export default MovieRatingSmall

@@ -3,24 +3,24 @@ import {
   faHome,
   faSearch,
   faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useRef, useState } from "react";
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useEffect, useRef, useState } from 'react'
+import { useHistory } from 'react-router'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
-`;
+`
 
 const Navbar = styled.div`
   background: #1c262a;
   height: 100%;
   width: 100%;
   color: white;
-`;
+`
 
 const Ul = styled.ul`
   height: 100%;
@@ -32,7 +32,7 @@ const Ul = styled.ul`
   & * {
     color: white;
   }
-`;
+`
 
 const Search = styled.input`
   width: 25vw;
@@ -47,7 +47,7 @@ const Search = styled.input`
   .isactive {
     border: none !important;
   }
-`;
+`
 
 const Icon = styled(FontAwesomeIcon)`
   height: 50px;
@@ -62,7 +62,7 @@ const Icon = styled(FontAwesomeIcon)`
   & * {
     transform: translate(-5px) scale(1.3);
   }
-`;
+`
 
 const Searchbar = styled.form`
   width: auto;
@@ -74,7 +74,7 @@ const Searchbar = styled.form`
   @media (max-width: 500px) {
     width: 125px;
   }
-`;
+`
 
 const SearchIcon = styled.button`
   position: absolute;
@@ -98,21 +98,21 @@ const SearchIcon = styled.button`
   &:hover * {
     color: skyblue;
   }
-`;
+`
 
 const LandingNavbar = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const inputRef = useRef(null);
-  const history = useHistory();
+  const [searchTerm, setSearchTerm] = useState('')
+  const inputRef = useRef(null)
+  const history = useHistory()
 
   useEffect(() => {
-    const { current } = inputRef;
-    current.focus();
-  });
+    const { current } = inputRef
+    current.focus()
+  })
 
   const handleSubmit = () => {
-    searchTerm && history.push(`/movieserver/search/${searchTerm}`);
-  };
+    searchTerm && history.push(`/movieserver/search/${searchTerm}`)
+  }
 
   return (
     <Wrapper>
@@ -142,7 +142,7 @@ const LandingNavbar = () => {
         </Ul>
       </Navbar>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default LandingNavbar;
+export default LandingNavbar

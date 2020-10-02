@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { TrailerSlider } from "../../Components";
-import { withTrailers } from "../../Hocs";
+import React from 'react'
+import styled from 'styled-components'
+import { TrailerSlider } from '../../Components'
+import { withTrailers } from '../../Hocs'
 
 const Wrapper = styled.div`
   height: auto;
@@ -13,28 +13,26 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const Heading = styled.div`
   font-size: 40px;
   font-weight: 600;
   width: 100%;
-`;
-
-const TrailersContainer=styled.div`
-width:100%;
-height:auto;
 `
 
-const Trailers = ({ trailers }) => {
-  return (
-    <Wrapper>
-      <Heading>TRAILERS</Heading>
-      <TrailersContainer>
-        {trailers && <TrailerSlider trailers={trailers} />}
-      </TrailersContainer>
-    </Wrapper>
-  );
-};
+const TrailersContainer = styled.div`
+  width: 100%;
+  height: auto;
+`
 
-export default withTrailers(Trailers);
+const Trailers = ({ trailers }) => (
+  <Wrapper>
+    <Heading>TRAILERS</Heading>
+    <TrailersContainer>
+      {trailers && <TrailerSlider trailers={trailers} />}
+    </TrailersContainer>
+  </Wrapper>
+)
+
+export default withTrailers(Trailers)

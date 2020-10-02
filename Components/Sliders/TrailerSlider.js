@@ -1,6 +1,6 @@
-import React from "react";
-import { Carousel } from "react-bootstrap";
-import styled from "styled-components";
+import React from 'react'
+import { Carousel } from 'react-bootstrap'
+import styled from 'styled-components'
 
 const Wrapper = styled.div`
   height: auto;
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
       background-color: skyblue;
     }
   }
-`;
+`
 
 const MovieCard = styled(Carousel.Item)`
   width: 100%;
@@ -31,14 +31,14 @@ const MovieCard = styled(Carousel.Item)`
 
   max-width: 600px;
   max-height: 600px;
-`;
+`
 
 const IFrame = styled.iframe`
   width: 80vw;
   height: 80vw;
   max-width: 600px;
   max-height: 600px;
-`;
+`
 
 const Title = styled.div`
   font-size: 28px;
@@ -50,60 +50,58 @@ const Title = styled.div`
   @media (max-width: 600px) {
     font-size: 18px;
   }
-`;
+`
 
-const TrailerSlider = ({ trailers = [] }) => {
-  return (
-    <Wrapper>
-      <Carousel interval={100000} id='trailer-carousel'>
-        {trailers &&
-          trailers.map((trailer, index) => (
-            <MovieCard key={`trailer-item-${index}`}>
-              <Title>{trailer.name}</Title>
-              <IFrame
-                src={`https://www.youtube.com/embed/${trailer.key}`}
-                style={{ border: "none" }}
-              />
-            </MovieCard>
-          ))}
-      </Carousel>
-    </Wrapper>
-  );
-};
+const TrailerSlider = ({ trailers = [] }) => (
+  <Wrapper>
+    <Carousel interval={100000} id="trailer-carousel">
+      {trailers &&
+        trailers.map((trailer, index) => (
+          <MovieCard key={`trailer-item-${index}`}>
+            <Title>{trailer.name}</Title>
+            <IFrame
+              src={`https://www.youtube.com/embed/${trailer.key}`}
+              style={{ border: 'none' }}
+            />
+          </MovieCard>
+        ))}
+    </Carousel>
+  </Wrapper>
+)
 
 function NextArrow(props) {
-  const { className, style, onClick } = props;
+  const { className, style, onClick } = props
   return (
     <div
       className={className}
       style={{
         ...style,
-        display: "block",
-        transform: "scale(1.5)",
-        zIndex: "1000",
-        color: "transparent",
-        background: "transparent",
+        display: 'block',
+        transform: 'scale(1.5)',
+        zIndex: '1000',
+        color: 'transparent',
+        background: 'transparent',
       }}
       onClick={onClick}
     />
-  );
+  )
 }
 
 function PrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { className, style, onClick } = props
   return (
     <div
       className={className}
       style={{
         ...style,
-        display: "block",
-        background: "transparent",
-        transform: "translate(5vw, -4vw) scale(1.5)",
-        zIndex: "1000",
+        display: 'block',
+        background: 'transparent',
+        transform: 'translate(5vw, -4vw) scale(1.5)',
+        zIndex: '1000',
       }}
       onClick={onClick}
     />
-  );
+  )
 }
 
-export default TrailerSlider;
+export default TrailerSlider

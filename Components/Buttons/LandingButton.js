@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const Wrapper = styled.div`
   width: 35vw;
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   display: inline-block;
   padding: 3px;
   margin: 0 10px;
-`;
+`
 
 const Button = styled.button`
   background: linear-gradient(165deg, #251431 0%, #161130 22%);
@@ -36,7 +36,7 @@ const Button = styled.button`
     background: #deb150;
     color: black;
   }
-`;
+`
 
 const BorderWrap = styled.div`
   height: 100%;
@@ -44,16 +44,14 @@ const BorderWrap = styled.div`
   border-radius: 5px;
 
   background: #eb4e7a;
-`;
+`
 
-const LandingButton = ({ children, onClick }) => {
-  return (
-    <Wrapper onClick={onClick}>
-      <BorderWrap>
-        <Button>{children}</Button>
-      </BorderWrap>
-    </Wrapper>
-  );
-};
+const LandingButton = ({ children, onClick }) => (
+  <Wrapper onClick={onClick}>
+    <BorderWrap>
+      <Button>{children}</Button>
+    </BorderWrap>
+  </Wrapper>
+)
 
-export default LandingButton;
+export default LandingButton

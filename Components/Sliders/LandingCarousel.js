@@ -1,35 +1,33 @@
-import React from "react";
-import { Carousel } from "react-bootstrap";
-import styled from "styled-components";
-import { withMovieDetails } from "../../Hocs";
+import React from 'react'
+import { Carousel } from 'react-bootstrap'
+import styled from 'styled-components'
+import { withMovieDetails } from '../../Hocs'
 
-const LandingCarousel = ({ movies = [] }) => {
-  return (
-    <Wrapper>
-      <Carousel
-        interval={4000}
-        controls={false}
-        style={{ width: "100%", height: "100%" }}
-      >
-        {movies &&
-          movies.map(
-            (movie, index) =>
-              index < 3 &&
-              movie.backdrop_path && (
-                <Carousel.Item key={`landing-carousel-item-${index}`}>
-                  <CarouselInner id={movie.id} />
-                </Carousel.Item>
-              )
-          )}
-      </Carousel>
-    </Wrapper>
-  );
-};
+const LandingCarousel = ({ movies = [] }) => (
+  <Wrapper>
+    <Carousel
+      interval={4000}
+      controls={false}
+      style={{ width: '100%', height: '100%' }}
+    >
+      {movies &&
+        movies.map(
+          (movie, index) =>
+            index < 3 &&
+            movie.backdrop_path && (
+              <Carousel.Item key={`landing-carousel-item-${index}`}>
+                <CarouselInner id={movie.id} />
+              </Carousel.Item>
+            ),
+        )}
+    </Carousel>
+  </Wrapper>
+)
 
 const CarouselInnerJSX = ({ movieDetails }) => {
-  const { backdrop_path, title, name, genres = [{ name: "" }], vote_average } =
-    movieDetails || {};
-  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
+  const { backdrop_path, title, name, genres = [{ name: '' }], vote_average } =
+    movieDetails || {}
+  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`
   return (
     <>
       <Image>
@@ -40,14 +38,14 @@ const CarouselInnerJSX = ({ movieDetails }) => {
         <Category>Trending</Category>
         <Title>{title || name}</Title>
         <SubDetails>
-          {genres[0] && genres[0]["name"]} | {vote_average} Rating
+          {genres[0] && genres[0].name} | {vote_average} Rating
         </SubDetails>
       </DetailsOverlay>
     </>
-  );
-};
+  )
+}
 
-const CarouselInner = withMovieDetails(CarouselInnerJSX);
+const CarouselInner = withMovieDetails(CarouselInnerJSX)
 
 const Wrapper = styled.div`
   height: 100%;
@@ -56,7 +54,6 @@ const Wrapper = styled.div`
 
   /* OVERWRITING CAROUSEL INDICATOR STYLING AND POSITIONING */
   & .carousel-indicators {
-   
     li {
       margin: 0 0.1vw;
       width: 33.3vw;
@@ -67,7 +64,7 @@ const Wrapper = styled.div`
       background-color: skyblue;
     }
   }
-`;
+`
 
 const DetailsOverlay = styled(Carousel.Caption)`
   /* OVERWRITING CAROUSEL CAPTION POSITONING & STYLING */
@@ -79,7 +76,7 @@ const DetailsOverlay = styled(Carousel.Caption)`
   flex-direction: column;
   align-items: start;
   justify-content: end;
-`;
+`
 
 const DarkOverlay = styled.div`
   width: 100%;
@@ -91,18 +88,18 @@ const DarkOverlay = styled.div`
   /* Black overlay */
   background: black;
   opacity: 0.4;
-`;
+`
 
 const Image = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-`;
+`
 
 const Img = styled.img`
   width: 100%;
   height: 100%;
-`;
+`
 
 const Category = styled.h2`
   text-transform: uppercase;
@@ -111,7 +108,7 @@ const Category = styled.h2`
   @media (max-width: 600px) {
     font-size: 12px;
   }
-`;
+`
 
 const Title = styled.h1`
   text-transform: capitalize;
@@ -121,7 +118,7 @@ const Title = styled.h1`
   @media (max-width: 600px) {
     font-size: 24px;
   }
-`;
+`
 
 const SubDetails = styled.h3`
   text-transform: capitalize;
@@ -130,6 +127,6 @@ const SubDetails = styled.h3`
   @media (max-width: 600px) {
     font-size: 12px;
   }
-`;
+`
 
-export default LandingCarousel;
+export default LandingCarousel
