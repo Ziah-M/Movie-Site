@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router";
-import styled from "styled-components";
+import React, { useState } from 'react'
+import { useHistory } from 'react-router'
+import styled from 'styled-components'
 
 const MovieCardSmall = ({
-  url = "",
+  url = '',
   children,
   className,
   isTv,
@@ -11,43 +11,41 @@ const MovieCardSmall = ({
   isPerson,
   id,
 }) => {
-  const [mouseXStart, setMouseXStart] = useState(null);
+  const [mouseXStart, setMouseXStart] = useState(null)
 
   const imageUrl = url
     ? `https://image.tmdb.org/t/p/original${url}`
     : // PROFILE PICTURE NOT FOUND IMAGE
-      "https://i.imgur.com/dnj1Cko.png";
+      'https://i.imgur.com/dnj1Cko.png'
 
-  const history = useHistory();
+  const history = useHistory()
 
   const handleMouseDown = (event) => {
-    setMouseXStart(event.clientX);
-  };
+    setMouseXStart(event.clientX)
+  }
 
   const handleMouseUp = (event) => {
-    console.log(event);
-
     if (
       event.clientX >= mouseXStart - 20 &&
       event.clientX <= mouseXStart + 20
     ) {
-      triggerRouting();
+      triggerRouting()
     }
-  };
+  }
 
   const triggerRouting = () => {
     if (isMovie) {
-      history.push(`/movieserver/movie/${id}`);
+      history.push(`/movieserver/movie/${id}`)
     }
 
     if (isTv) {
-      history.push(`/movieserver/tv/details/${id}`);
+      history.push(`/movieserver/tv/details/${id}`)
     }
 
     if (isPerson) {
-      history.push(`/movieserver/actor/${id}`);
+      history.push(`/movieserver/actor/${id}`)
     }
-  };
+  }
 
   return (
     <Wrapper
@@ -58,8 +56,8 @@ const MovieCardSmall = ({
       <Img src={imageUrl} />
       {children}
     </Wrapper>
-  );
-};
+  )
+}
 
 // POSTER ASPECT RATIO = Height = 1.5 x Width
 
@@ -77,11 +75,11 @@ const Wrapper = styled.div`
       border-radius: 5px;
     }
   }
-`;
+`
 
 const Img = styled.img`
   width: 100%;
   height: 100%;
-`;
+`
 
-export default MovieCardSmall;
+export default MovieCardSmall

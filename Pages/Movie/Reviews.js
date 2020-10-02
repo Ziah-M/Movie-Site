@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import { withReviews } from "../../Hocs";
+import React from 'react'
+import styled from 'styled-components'
+import { withReviews } from '../../Hocs'
 
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
-`;
+`
 
 const Panel = styled.div`
   background: #1c262a;
@@ -28,7 +28,7 @@ const Panel = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: start;
-`;
+`
 
 const Container = styled.div`
   display: flex;
@@ -37,13 +37,13 @@ const Container = styled.div`
   justify-content: center;
   height: auto;
   width: 100%;
-`;
+`
 
 const Name = styled.div`
   font-size: 24px;
   font-weight: 700;
   color: white;
-`;
+`
 
 const Review = styled.div`
   font-size: 18px;
@@ -59,7 +59,7 @@ const Review = styled.div`
   @media (max-width: 500px) {
     font-size: 14px;
   }
-`;
+`
 
 const Link = styled.div`
   color: #bfbfbf;
@@ -68,31 +68,30 @@ const Link = styled.div`
   @media (max-width: 500px) {
     font-size: 14px;
   }
-`;
+`
 
 const Title = styled.div`
   font-size: 40px;
   text-transform: uppercase;
-`;
+`
 
 const Reviews = ({
   movieReviews: reviews = [
     {
-      author: "",
-      url: "",
-      content: "No reviews for this movie have been posted yet.",
+      author: '',
+      url: '',
+      content: 'No reviews for this movie have been posted yet.',
     },
   ],
 }) => {
   if (!reviews) {
-    console.log("no reviews found");
     reviews = [
       {
-        author: "",
-        url: "",
-        content: "No reviews for this movie have been posted yet.",
+        author: '',
+        url: '',
+        content: 'No reviews for this movie have been posted yet.',
       },
-    ];
+    ]
   }
   return (
     <Wrapper>
@@ -101,7 +100,7 @@ const Reviews = ({
         reviews.map((review, index) => (
           <Panel
             key={`review-panel-${index}`}
-            className={`${index % 2 === 1 ? "accent-left" : "accent-right"}`}
+            className={`${index % 2 === 1 ? 'accent-left' : 'accent-right'}`}
           >
             <Container>
               <Name>{review.author}</Name>
@@ -113,7 +112,7 @@ const Reviews = ({
           </Panel>
         ))}
     </Wrapper>
-  );
-};
+  )
+}
 
-export default withReviews(Reviews);
+export default withReviews(Reviews)
