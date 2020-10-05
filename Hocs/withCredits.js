@@ -36,7 +36,6 @@ const withCredits = (Component) => {
       if (cache) {
         setCredits(JSON.parse(cache))
       } else {
-        console.log('FETCHING CREDITS')
         axios
           .request(`${conditionalUrl}/${id}/credits?api_key=${API_KEY}`)
           .then((result) => {

@@ -9,6 +9,7 @@ import {
 } from '../../Components'
 import { getCategories } from '../../Data'
 import Footer from './Footer'
+import { routeMovieSite } from '../../../../private'
 
 const Section = styled.div`
   width: 100vw;
@@ -87,10 +88,10 @@ const Landing = ({
         <LandingCarousel movies={moviesTrending} />
       </Section>
       <Section id="select-category">
-        <LandingButton onClick={() => history.push('/movieserver')}>
+        <LandingButton onClick={() => history.push(`/${routeMovieSite}`)}>
           Movies
         </LandingButton>
-        <LandingButton onClick={() => history.push('/movieserver/tv')}>
+        <LandingButton onClick={() => history.push(`/${routeMovieSite}/tv`)}>
           TV Shows
         </LandingButton>
       </Section>

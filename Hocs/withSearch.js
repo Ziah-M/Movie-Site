@@ -32,7 +32,6 @@ const withSearch = (Component) => {
       if (cache) {
         setSearch(JSON.parse(cache))
       } else {
-        console.log('Searching')
         const searchQueryString = encodeURI(searchTerm)
         axios
           .request(

@@ -10,6 +10,7 @@ import {
 import { getCategories } from '../../Data'
 import { withFetchTv } from '../../Hocs'
 import Footer from '../Landing/Footer'
+import { routeMovieSite } from '../../../../private'
 
 const Section = styled.div`
   width: 100vw;
@@ -68,10 +69,10 @@ const Landing = ({
         <LandingCarousel movies={tvPopular} />
       </Section>
       <Section id="select-category">
-        <LandingButton onClick={() => history.push('/movieserver')}>
+        <LandingButton onClick={() => history.push(`/${routeMovieSite}`)}>
           Movies
         </LandingButton>
-        <LandingButton onClick={() => history.push('/movieserver/tv')}>
+        <LandingButton onClick={() => history.push(`/${routeMovieSite}/tv`)}>
           TV Shows
         </LandingButton>
       </Section>

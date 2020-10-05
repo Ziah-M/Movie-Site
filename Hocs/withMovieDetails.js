@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import API_KEY from '../private'
+import { Spinner } from 'react-bootstrap'
 
 const URL = 'https://api.themoviedb.org/3'
 const MOVIE_URL = 'https://api.themoviedb.org/3/movie'
@@ -49,7 +50,15 @@ const withMovieDetails = (Component) => {
       }
     }
 
-    return <Component {...props} movieDetails={movieDetails} />
+    return (
+      <>
+        {!movieDetails ? (
+          <Spinner animation="border" variant="warning" />
+        ) : (
+          <Component {...props} movieDetails={movieDetails} />
+        )}
+      </>
+    )
   }
 
   return WithMovieDetails

@@ -21,7 +21,6 @@ const withActorRoles = (Component) => {
       if (cache) {
         setActorRoles(JSON.parse(cache))
       } else {
-        console.log('FETCHING ACTOR ROLES for: ', id)
         axios
           .request(`${MOVIE_URL}/${id}/combined_credits?api_key=${API_KEY}`)
           .then((result) => {

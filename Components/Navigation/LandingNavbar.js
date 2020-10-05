@@ -9,6 +9,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { routeMovieSite } from '../../../../private'
 
 const Wrapper = styled.div`
   height: 100%;
@@ -111,7 +112,7 @@ const LandingNavbar = () => {
   })
 
   const handleSubmit = () => {
-    searchTerm && history.push(`/movieserver/search/${searchTerm}`)
+    searchTerm && history.push(`/${routeMovieSite}/search/${searchTerm}`)
   }
 
   return (
@@ -130,13 +131,13 @@ const LandingNavbar = () => {
               <Icon icon={faSearch} />
             </SearchIcon>
           </Searchbar>
-          <Link to="/movieserver">
+          <Link to={`/${routeMovieSite}`}>
             <Icon icon={faHome} />
           </Link>
-          <Link to="/movieserver/actor/287">
+          <Link to={`/${routeMovieSite}/actor/287`}>
             <Icon icon={faUser} />
           </Link>
-          <Link to="/movieserver/movie/577922">
+          <Link to={`/${routeMovieSite}/movie/577922`}>
             <Icon icon={faBolt} />
           </Link>
         </Ul>

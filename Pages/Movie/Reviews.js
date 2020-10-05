@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { withReviews } from '../../Hocs'
+import { Link } from 'react-router-dom'
 
 const Wrapper = styled.div`
   height: 100%;
@@ -61,7 +62,7 @@ const Review = styled.div`
   }
 `
 
-const Link = styled.div`
+const LinkContainer = styled.div`
   color: #bfbfbf;
   font-size: 18px;
 
@@ -105,9 +106,9 @@ const Reviews = ({
             <Container>
               <Name>{review.author}</Name>
               <Review>{review.content.substr(0, 400)}...</Review>
-              <Link>
-                <a href={review.url}>See full review &nbsp;&nbsp;</a>
-              </Link>
+              <LinkContainer>
+                <Link to={review.url}>See full review &nbsp;&nbsp;</Link>
+              </LinkContainer>
             </Container>
           </Panel>
         ))}

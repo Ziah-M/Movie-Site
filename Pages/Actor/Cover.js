@@ -99,7 +99,7 @@ const Cover = ({ actor, backdrop_path }) => {
   const age =
     year - parseInt(birthday && birthday.substr(0, 4)) || 'Age not found'
 
-  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`
+  const imageUrl = `https://image.tmdb.org/t/p/w780${backdrop_path}`
 
   return (
     <Wrapper url={imageUrl}>

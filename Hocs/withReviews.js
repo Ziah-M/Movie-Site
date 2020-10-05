@@ -36,7 +36,6 @@ const withMovieReviews = (Component) => {
       if (cache) {
         setMovieReviews(JSON.parse(cache))
       } else {
-        console.log('FETCHING REVIEWS')
         axios
           .request(`${conditionalUrl}/${id}/reviews?api_key=${API_KEY}`)
           .then((result) => {

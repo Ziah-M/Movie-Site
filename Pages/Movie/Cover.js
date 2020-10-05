@@ -111,7 +111,7 @@ const Cover = ({ movie }) => {
     release_date,
     revenue = 0,
   } = movie || {}
-  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`
+  const imageUrl = `https://image.tmdb.org/t/p/w780${backdrop_path}`
 
   const revenueWithCommas = numberWithCommas(revenue)
   return (

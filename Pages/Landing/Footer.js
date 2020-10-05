@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import styled from 'styled-components'
 import { animateScroll as scroll } from 'react-scroll'
+import { Link } from 'react-router-dom'
 
 const ATTRIBUTION_LOGO =
   'https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg'
@@ -14,12 +15,12 @@ const Footer = (props) => (
       <LeftInner>
         <Headings>
           MOVIE SERVER &nbsp;&nbsp;&nbsp;{' '}
-          <Link onClick={() => scroll.scrollToTop()}>Home</Link>
+          <MyLink onClick={() => scroll.scrollToTop()}>Home</MyLink>
         </Headings>
         <LeftRow>
           <span>portfolio: </span>
           <span>
-            <a href="https://zm-portfolio.web.app">zm-portfolio.web.app</a>
+            <Link to="/">Portfolio Home</Link>
           </span>
         </LeftRow>
         <LeftRow>Copyright &copy; 2020</LeftRow>
@@ -29,28 +30,28 @@ const Footer = (props) => (
       <RightInner>
         <TmdbLogo src={ATTRIBUTION_LOGO} />
         <SocialButtons>
-          <a href="https://www.twitter.com/themoviedb">
+          <Link to="https://www.twitter.com/themoviedb">
             <IconContainer>
               <Icon icon={faTwitter} />
             </IconContainer>
-          </a>
-          <a href="https://www.facebook.com/themoviedb">
+          </Link>
+          <Link to="https://www.facebook.com/themoviedb">
             <IconContainer>
               <Icon icon={faFacebook} />
             </IconContainer>
-          </a>
-          <a href="https://www.themoviedb.org/documentation/api">
+          </Link>
+          <Link to="https://www.themoviedb.org/documentation/api">
             <IconContainer>
               <Icon icon={faFileCode} />
             </IconContainer>
-          </a>
+          </Link>
         </SocialButtons>
       </RightInner>
     </ColRight>
   </Wrapper>
 )
 
-const Link = styled.div`
+const MyLink = styled.div`
   &:hover {
     color: slategray;
   }

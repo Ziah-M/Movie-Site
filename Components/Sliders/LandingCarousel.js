@@ -2,32 +2,37 @@ import React from 'react'
 import { Carousel } from 'react-bootstrap'
 import styled from 'styled-components'
 import { withMovieDetails } from '../../Hocs'
+import { Spinner } from 'react-bootstrap'
 
 const LandingCarousel = ({ movies = [] }) => (
   <Wrapper>
-    <Carousel
-      interval={4000}
-      controls={false}
-      style={{ width: '100%', height: '100%' }}
-    >
-      {movies &&
-        movies.map(
-          (movie, index) =>
-            index < 3 &&
-            movie.backdrop_path && (
-              <Carousel.Item key={`landing-carousel-item-${index}`}>
-                <CarouselInner id={movie.id} />
-              </Carousel.Item>
-            ),
-        )}
-    </Carousel>
+    {!movies ? (
+      <Spinner animation="border" variant="warning" />
+    ) : (
+      <Carousel
+        interval={4000}
+        controls={false}
+        style={{ width: '100%', height: '100%' }}
+      >
+        {movies &&
+          movies.map(
+            (movie, index) =>
+              index < 3 &&
+              movie.backdrop_path && (
+                <Carousel.Item key={`landing-carousel-item-${index}`}>
+                  <CarouselInner id={movie.id} />
+                </Carousel.Item>
+              ),
+          )}
+      </Carousel>
+    )}
   </Wrapper>
 )
 
 const CarouselInnerJSX = ({ movieDetails }) => {
   const { backdrop_path, title, name, genres = [{ name: '' }], vote_average } =
     movieDetails || {}
-  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`
+  const imageUrl = `https://image.tmdb.org/t/p/w780${backdrop_path}`
   return (
     <>
       <Image>
